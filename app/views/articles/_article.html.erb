@@ -1,0 +1,9 @@
+<article>
+  <header>
+    <span class="author"><%= article.author.name %></span>
+		<span class="date"><%= article.created_at.strftime('%D') %>
+  </header>
+	<section>
+		<%= raw(article.rendered_body) %>
+	</section>
+</article>
