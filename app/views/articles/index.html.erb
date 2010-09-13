@@ -1,8 +1,11 @@
-<div id="flash_notice" style="display:none"></div>
-<articles id="list">
-<%= render @articles %>
-</articles>
-<%= will_paginate @articles %>
-
-<a id="form"></a>
-<%= render :partial => "form" %>
+<div id="left">
+	<div id="flash_notice" style="display:none"></div>
+	<articles id="list">
+	<%= render @articles %>
+	</articles>
+	<%= will_paginate @articles %>
+</div>
+<div id="right">
+	<h3>Something to add?</h3>
+	<%= render :partial => "form" %>
+</div>

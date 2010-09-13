@@ -2,7 +2,7 @@
   <header>
 		<h2><%= article.title %></h2>
     <em>by</em> <span class="author"><%= article.author.name %></span>
-		<em>on</em> <span class="date"><%= article.created_at.strftime('%D %T') %>
+		on <span class="date"><%= article.created_at.strftime('%B %e, %Y') %>
   </header>
 	<section>
 		<%= raw(article.rendered_body) %>
