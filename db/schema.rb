@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20100912172017) do
 
   create_table "articles", :force => true do |t|
-    t.string   "title",                           :null => false
-    t.text     "body",                            :null => false
+    t.string   "title"
+    t.text     "body"
     t.text     "rendered_body"
     t.integer  "author_id",                       :null => false
     t.boolean  "published",     :default => true

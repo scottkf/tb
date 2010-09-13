@@ -22,28 +22,54 @@
 body.bp {
   @include blueprint-typography(true);
   @include blueprint-utilities;
-  @include blueprint-debug;
   @include blueprint-interaction;
-  // Remove the scaffolding when you're ready to start doing visual design.
-  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+
+	#container {
+		@include container;
+		header {
+			font-family: "Palatino", "Times", serif;
+			font-size: 8em;
+			font-weight: bold;
+			letter-spacing: -0.03em;
+			span.small {
+				letter-spacing: normal;
+				font-weight: normal;
+				font-size: 0.4em;
+				font-variant: lowercase;	
+				span {
+					color: #db8e15;		
+					font-size: 1em;
+				}
+			}
+		}
+		nav {
+			
+		}
+		section#content {
+			articles {
+				article {
+					header {
+						border-bottom: 0px;
+						font-size: 1em;
+					}
+				}
+			}
+		}
+		footer {
+			
+		}
+	}
 }
 
-form.bp {
-  @include blueprint-form; }
+form {
+  @include blueprint-form; 
 
-// Page layout can be done using mixins applied to your semantic classes and IDs:
-body.two-col {
-  #container {
-    @include container; }
-  #header, #footer {
-    @include column($blueprint-grid-columns); }
-  #sidebar {
-    // One third of the grid columns, rounding down. With 24 cols, this is 8.
-    $sidebar-columns: floor($blueprint-grid-columns / 3);
-    @include column($sidebar-columns); }
-  #content {
-    // Two thirds of the grid columns, rounding up.
-    // With 24 cols, this is 16.
-    $content-columns: ceil(2 * $blueprint-grid-columns / 3);
-    // true means it's the last column in the row
-    @include column($content-columns, true); } }
+	fieldset {
+		border: 0px;
+	}
+
+	#errors {
+		background-color: #ec0000;
+		border-color: 2px solid red;
+	}
+}

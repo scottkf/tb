@@ -15,24 +15,24 @@ describe Article do
     @article = Article.new
   end
   
-  # context "#valid" do
-  #   it "should have a title" do
-  #     @article.attributes = valid_article_attributes.except(:title)
-  #     @article.save
-  #     @article.should_not be_valid
-  #     @article.should have(1).error_on(:title)
-  #     @article.title = "hello"
-  #     @article.should be_valid
-  #   end
-  #   it "should have a body" do
-  #     @article.attributes = valid_article_attributes.except(:body )
-  #     @article.save
-  #     @article.should_not be_valid
-  #     @article.should have(1).error_on(:body)
-  #     @article.body = "hello"
-  #     @article.should be_valid
-  #   end
-  # end
+  context "#valid" do
+    it "should have a title" do
+      @article.attributes = valid_article_attributes.except(:title)
+      @article.save
+      @article.should_not be_valid
+      @article.should have(1).error_on(:title)
+      @article.title = "hello"
+      @article.should be_valid
+    end
+    it "should have a body" do
+      @article.attributes = valid_article_attributes.except(:body )
+      @article.save
+      @article.should_not be_valid
+      @article.should have(1).error_on(:body)
+      @article.body = "hello"
+      @article.should be_valid
+    end
+  end
   
   context "#markdown" do
     it "should process markdown correctly" do

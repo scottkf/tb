@@ -1,0 +1,17 @@
+<%= form_for @article, :remote => true do |f| %>
+	<%= field_set_tag do %>
+	<%= f.label :title%>
+	<%= f.text_field :title %>
+	<% end %>
+		<%= fields_for @author do |author| %>
+			<%= field_set_tag do %>
+				<%= f.label :author %>
+				<%= author.text_field :name %>
+			<% end %>
+		<% end %>
+	<%= field_set_tag do %>
+		<%= f.label :body%>
+		<%= f.text_area :body %>
+	<% end %>
+	<%= submit_tag "Post", :id => "submit" %>
+<% end %>

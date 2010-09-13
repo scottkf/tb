@@ -1,9 +1,25 @@
 class ArticlesController < ApplicationController
+
+  respond_to :html, :xml
+  respond_to :js, :only => :create
+
   def index
-    @articles = Article.where(:published => true).paginate(:page => params[:page])
+    @articles = Article.where(:published => true).order('created_at DESC').paginate(:page => params[:page])
+    @article = Article.new
+    @author = Author.new
+  end
+  
+  def new
   end
 
-  def new
+
+  def create
+    @article = Article.new(params[:article])
+    @article.author = Author.new(params[:author])
+    if @article.save 
+      flash[:notice] = "Success"
+    end
+    
   end
 
 end

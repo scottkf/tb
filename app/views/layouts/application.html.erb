@@ -8,13 +8,24 @@
   <%= stylesheet_link_tag 'ie.css', :media => 'screen, projection' %>
 	<![endif]-->
 
+	<%= javascript_include_tag 'modernizr-1.5.min' %>
 	<%= javascript_include_tag 'jquery' %>
   <%= javascript_include_tag 'rails' %>
   <%= csrf_meta_tag %>
-</head>
-<body>
 
-<%= yield %>
-
+	</head>
+<body class="no-js bp">
+	<div id="container">
+		<header>
+			478<span class="small">teabags<span>.</span>com</span>
+		</header>
+		<nav>
+		</nav>
+		<section id="content">
+			<%= yield %>
+		</section>
+		<footer>
+		</footer>
+	</div>
 </body>
 </html>

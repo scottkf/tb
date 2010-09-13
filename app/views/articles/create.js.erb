@@ -1,0 +1,25 @@
+if ($("#errors").length == 0) $("#new_article").prepend("<ul id='errors'></ul>")
+<% if @article.errors.any? -%>
+	/*Hide the flash notice div*/
+	$("#flash_notice").hide(300);
+
+
+	$("#errors").replaceWith("<%= escape_javascript(render :partial => 'shared/errors', :locals => {:object => @article})%>");
+	$("#errors").hide(0);
+	$("#errors").show(300);
+
+<% else -%>
+	$("#errors").hide(300);
+
+	/*Update the html of the div flash_notice with the new one*/
+	$("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+
+	/*Show the flash_notice div*/
+	$("#flash_notice").show(300);
+
+	/*Clear the entire form*/
+	$(":input:not(input[type = submit])").val("");
+
+	$("#list").append("<%= escape_javascript(render @article)%>");
+
+<% end -%>

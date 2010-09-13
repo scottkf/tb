@@ -1,5 +1,8 @@
-<h1>Articles#index</h1>
-<articles>
+<div id="flash_notice" style="display:none"></div>
+<articles id="list">
 <%= render @articles %>
 </articles>
 <%= will_paginate @articles %>
+
+<a id="form"></a>
+<%= render :partial => "form" %>

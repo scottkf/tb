@@ -6,6 +6,7 @@ gem "sqlite3-ruby"
 gem "compass", ">= 0.10.5"
 gem "will_paginate", "~> 3.0.pre2"
 gem "rdiscount"
+gem "mysql"
 
 group :test do
   gem "rspec"

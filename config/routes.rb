@@ -1,7 +1,6 @@
 A487teabagsCom::Application.routes.draw do
-  get "articles/index"
+  resources :articles, :only => [:new, :index, :create]
 
-  post "articles/new"
 
   root :to => "articles#index"
 

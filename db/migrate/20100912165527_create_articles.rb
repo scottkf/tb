@@ -1,8 +1,8 @@
 class CreateArticles < ActiveRecord::Migration
   def self.up
     create_table :articles do |t|
-      t.string :title, :null => false
-      t.text :body, :null => false
+      t.string :title
+      t.text :body
       t.text :rendered_body
       t.integer :author_id, :null => false
       t.boolean :published, :default => true
