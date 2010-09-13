@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params[:article])
-    @article.author = Author.new(params[:author])
+    @article.author = Author.find_or_create_by_name(params[:author])
     if @article.save 
       flash[:notice] = "Success"
     end

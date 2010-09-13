@@ -26,7 +26,7 @@ body.bp {
 
 	#container {
 		@include container;
-		header {
+		header#top {
 			font-family: "Palatino", "Times", serif;
 			font-size: 8em;
 			font-weight: bold;
@@ -37,7 +37,7 @@ body.bp {
 				font-size: 0.4em;
 				font-variant: lowercase;	
 				span {
-					color: #db8e15;		
+					color: $link-color;		
 					font-size: 1em;
 				}
 			}
@@ -49,8 +49,18 @@ body.bp {
 			articles {
 				article {
 					header {
+						em {
+							color: $link-color;
+						}
+						h2 {
+							margin-bottom: 0em; 
+						}
+						span,em {
+							font-size: 1.3em;
+						}
+						margin-bottom: 1em;
 						border-bottom: 0px;
-						font-size: 1em;
+						font-size: 1.2em;
 					}
 				}
 			}

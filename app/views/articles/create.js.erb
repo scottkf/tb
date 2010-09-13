@@ -20,6 +20,6 @@ if ($("#errors").length == 0) $("#new_article").prepend("<ul id='errors'></ul>")
 	/*Clear the entire form*/
 	$(":input:not(input[type = submit])").val("");
 
-	$("#list").append("<%= escape_javascript(render @article)%>");
+	$("#list").prepend("<%= escape_javascript(render @article)%>");
 
 <% end -%>
