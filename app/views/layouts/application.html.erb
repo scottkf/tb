@@ -4,17 +4,21 @@
   <title>487teabags.com</title>
   <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %> 
   <%= stylesheet_link_tag 'print.css', :media => 'print' %>
+  <%= stylesheet_link_tag 'github-voice.css', :media => 'screen' %>
   <!--[if lt IE 8]>
   <%= stylesheet_link_tag 'ie.css', :media => 'screen, projection' %>
 	<![endif]-->
 
 	<%= javascript_include_tag 'modernizr-1.5.min' %>
-	<%= javascript_include_tag 'jquery' %>
+	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
   <%= javascript_include_tag 'rails' %>
+	<%= javascript_include_tag 'github-voice/jquery.github-voice' %>
+	<%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 
 	</head>
 <body class="no-js bp">
+	<a href="#" class="voice"></a>
 	<div id="container">
 		<header id="top">
 			478<span class="small">teabags<span>.</span>com</span>

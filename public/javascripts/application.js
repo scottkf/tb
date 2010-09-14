@@ -1,0 +1,12 @@
+$(document).ready(function() {
+  
+  //github-voice
+  $('a.voice').githubVoice('scottkf', 'tb', {
+    limit : 3,
+    text  : {
+      loading      : "Loading ideas...",
+      description  : "Below are the top three ideas.",
+      callToAction : "View feedback forum."
+    }
+  });  
+});

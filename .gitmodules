@@ -1,0 +1,3 @@
+[submodule "public/javascripts/github-voice"]
+	path = public/javascripts/github-voice
+	url = http://github.com/tristandunn/github-voice.git
