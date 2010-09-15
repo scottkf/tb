@@ -6,7 +6,7 @@ project_path = Compass::AppIntegration::Rails.root
 http_path = "/"
 # changed for heroku
 #css_dir = "tmp/stylesheets/compiled"
-css_dir = "public/stylesheets" 
+css_dir = "public/stylesheets"
 sass_dir = "public/stylesheets/sass"
 environment = Compass::AppIntegration::Rails.env
 output_style = :compressed
