@@ -8,7 +8,6 @@ gem "mysql"
 gem "compass"
 
 group :development, :test do
-  gem "compass", ">= 0.10.5"
   gem "rspec"
   gem "rspec-rails",      ">= 2.0.0.beta"
   gem "autotest"
