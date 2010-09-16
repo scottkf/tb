@@ -6,6 +6,7 @@ gem "will_paginate", "~> 3.0.pre2"
 gem "rdiscount"
 gem "mysql"
 gem "compass"
+gem "devise"
 
 group :development, :test do
   gem "rspec"

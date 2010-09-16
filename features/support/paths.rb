@@ -14,6 +14,12 @@ module NavigationHelpers
     when /the articles page/
       '/articles'
 
+    when /register/
+      '/authors/sign_up'
+    
+    when /login/
+      '/authors/sign_in'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

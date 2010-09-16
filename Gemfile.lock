@@ -34,6 +34,7 @@ GEM
     autotest (4.3.2)
     autotest-rails (4.1.0)
       ZenTest
+    bcrypt-ruby (2.1.2)
     builder (2.1.2)
     capybara (0.3.9)
       culerity (>= 0.2.4)
@@ -58,6 +59,9 @@ GEM
       cucumber (>= 0.8.0)
     culerity (0.2.12)
     database_cleaner (0.5.2)
+    devise (1.1.2)
+      bcrypt-ruby (~> 2.1.2)
+      warden (~> 0.10.7)
     diff-lcs (1.1.2)
     envjs (0.3.7)
       johnson (>= 2.0.0.pre3)
@@ -127,6 +131,8 @@ GEM
       polyglot (>= 0.3.1)
     trollop (1.16.2)
     tzinfo (0.3.23)
+    warden (0.10.7)
+      rack (>= 1.0.0)
     will_paginate (3.0.pre2)
 
 PLATFORMS
@@ -141,6 +147,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  devise
   launchy
   mysql
   rails (>= 3.0.0)

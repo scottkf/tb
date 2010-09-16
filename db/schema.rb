@@ -23,9 +23,24 @@ ActiveRecord::Schema.define(:version => 20100912172017) do
   end
 
   create_table "authors", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "first_name",                                          :null => false
+    t.string   "last_name",                                           :null => false
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "authors", ["email"], :name => "index_authors_on_email", :unique => true
+  add_index "authors", ["reset_password_token"], :name => "index_authors_on_reset_password_token", :unique => true
 
 end
