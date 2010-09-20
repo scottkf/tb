@@ -18,8 +18,7 @@
 
 	</head>
 <body class="no-js bp">
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>	
+	<% flash_messages %> 
 	<a href="#" class="voice"></a>
 	<div id="container">
 		<header id="top">
@@ -28,8 +27,11 @@
 		<nav>
 			<ul>
 				<li><a href="/">about teabags</a></li>
-				<li><a href="/">add a teabag</a></li>
 				<li><a href="mailto:web@487teabags.com">contact</a></li>
+				<% if author_signed_in? %><li><a href="#add">add</a></li>
+				<li><%= link_to "sign out", destroy_author_session_path %></li>
+				<% else %><li><%= link_to "sign in", new_author_session_path %></li>
+				<% end %>
 			</ul>
 		</nav>
 		<section id="content">

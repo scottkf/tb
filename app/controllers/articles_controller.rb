@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
     @article.author = current_author
     # @article.author = Author.find_or_create_by_email(params[:author])
     if @article.save 
-      flash[:notice] = "Success"
+      flash[:notice] = "Successfully added an article"
     end
     
   end
