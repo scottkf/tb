@@ -4,7 +4,7 @@ module ArticleSpecHelper
   def valid_article_attributes
     { :title => "My awesome title",
       :body => "_awesome_",
-      :author => Author.create(:name => "Bob") }
+      :author => Author.create(:first_name => "Bob", :last_name => "Jones", :email => "bobjones@hot.com", :password => "bob123", :password_confirmation => "bob123") }
   end
 end
 

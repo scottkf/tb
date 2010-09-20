@@ -30,6 +30,17 @@ A487teabagsCom::Application.configure do
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
+  
+  config.action_mailer.default_url_options = { :host => '478teabags.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+    :address  => "mail.478teabags.com",
+    :port  => 26,
+    :user_name  => "web@478teabags.com",
+    :password  => "ballss",
+    :authentication  => :login
+  }
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
