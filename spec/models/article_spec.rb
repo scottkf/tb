@@ -4,7 +4,15 @@ module ArticleSpecHelper
   def valid_article_attributes
     { :title => "My awesome title",
       :body => "_awesome_",
-      :author => Author.create(:first_name => "Bob", :last_name => "Jones", :email => "bobjones@hot.com", :password => "bob123", :password_confirmation => "bob123") }
+      :author => Author.create(valid_author_attributes) }
+  end
+  
+  def valid_author_attributes
+    { :first_name => "Bob", 
+      :last_name => "Jones", 
+      :email => "bobjones@hot.com", 
+      :password => "bob123", 
+      :password_confirmation => "bob123" }
   end
 end
 
@@ -25,7 +33,7 @@ describe Article do
       @article.should be_valid
     end
     it "should have a body" do
-      @article.attributes = valid_article_attributes.except(:body )
+      @article.attributes = valid_article_attributes.except(:body)
       @article.save
       @article.should_not be_valid
       @article.should have(1).error_on(:body)
