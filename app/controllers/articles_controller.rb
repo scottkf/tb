@@ -11,8 +11,6 @@ class ArticlesController < ApplicationController
     @author = Author.new
   end
   
-  def new
-  end
 
 
   def create
@@ -23,6 +21,34 @@ class ArticlesController < ApplicationController
     # @article.author = Author.find_or_create_by_email(params[:author])
     if @article.save 
       flash[:notice] = "Successfully added an article"
+    end
+    
+  end
+  
+  def edit
+    @article = Article.find(params[:id])
+    unless current_author == @article.author
+      redirect_to(:root)
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if current_author == @article.author
+      respond_to do |format|
+        if @article.update_attributes(params[:article])
+          format.html { redirect_to(articles_path,
+                        :notice => 'Article was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @article.errors,
+                        :status => :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to(:root)
+      
     end
     
   end

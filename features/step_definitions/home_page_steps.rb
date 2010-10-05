@@ -1,18 +1,22 @@
-Given /^I have a article$/ do
-  @article = Article.new
+Given /^I have an article$/ do
+  @article = Article.make
 end
 
-
-
-Given /^my article has a title "([^"]*)"$/ do |title|
+Given /^the article has a title "([^"]*)"$/ do |title|
   @article.title = title
 end
 
-Given /^my article has body "([^"]*)"$/ do |body|
+Given /^the article has a body "([^"]*)"$/ do |body|
   @article.body = body
 end
 
-Given /^my article has an author named "([^"]*)" "([^"]*)" "([^"]*)"$/ do |first, last, email|
-  @article.author = Author.new(:first_name => first, :last_name => last, :email => email, :password => 'bob123123123', :password_confirmation => 'bob123123123')
+Given /^the article has an author "([^"]*)" "([^"]*)"$/ do |f, l|
+  @article.author = Author.make(:first_name => f, :last_name => l)
   @article.save
 end
+
+Given /^I authored the article$/ do
+  @article.author = @author
+  @article.save
+end
+

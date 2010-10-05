@@ -1,4 +1,7 @@
-<%= form_for @article, :remote => true do |f| %>
+<%= form_for @article, :remote => (params[:action] == 'index') || false do |f| %>
+	<% if @article.errors.any? -%>
+	<%= render :partial => 'shared/errors', :locals => {:object => @article} %>
+	<% end %>
 	<%= field_set_tag do %>
 		<%= f.label :title%>
 		<%= f.text_field :title %>
@@ -8,5 +11,5 @@
 		<%= f.label :body%>
 		<%= f.text_area :body %>
 	<% end %>
-	<%= submit_tag "Post", :id => "submit" %>
+	<%= submit_tag (params[:action] == 'index' && 'Post') || 'Edit', :id => "submit" %>
 <% end %>
