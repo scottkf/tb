@@ -79,6 +79,7 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
+    machinist (2.0.0.beta2)
     mail (2.2.6.1)
       activesupport (>= 2.3.6)
       mime-types
@@ -149,6 +150,7 @@ DEPENDENCIES
   database_cleaner
   devise
   launchy
+  machinist (>= 2.0.0.beta2)
   mysql
   rails (>= 3.0.0)
   rdiscount

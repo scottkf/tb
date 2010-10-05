@@ -19,4 +19,5 @@ group :development, :test do
   gem "capybara"
   gem "capybara-envjs"
   gem "launchy"
+  gem 'machinist', '>= 2.0.0.beta2'
 end

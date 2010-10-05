@@ -2,7 +2,7 @@ A487teabagsCom::Application.routes.draw do
 
   devise_for :authors
 
-  resources :articles, :only => [:new, :index, :create]
+  resources :articles
 
 
   root :to => "articles#index"
