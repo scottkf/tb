@@ -11,8 +11,6 @@ class ArticlesController < ApplicationController
     @author = Author.new
   end
   
-  def new
-  end
 
 
   def create

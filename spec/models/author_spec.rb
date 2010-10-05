@@ -33,4 +33,8 @@ describe Author do
     
     
   end
+  
+  context "#admin" do
+    
+  end
 end

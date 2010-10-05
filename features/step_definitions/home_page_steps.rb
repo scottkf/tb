@@ -19,3 +19,4 @@ Given /^I authored the article$/ do
   @article.author = @author
   @article.save
 end
+

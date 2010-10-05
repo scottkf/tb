@@ -41,5 +41,10 @@ Feature: Home Page
 		Then I should see "hello"
 		And I should see "this is the body"
 		And I should see "steve brown"
+		
+		
+
+	
+	
 	
 	
