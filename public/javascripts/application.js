@@ -15,6 +15,6 @@ $(document).ready(function() {
 
   //if it exists, remove the flash[]
   jQuery.each(['.message', '.alert', '.notice'], function(index, value) {
-    if ($(value)) $(value).delay(3000).hide(300);
+    if ($(value)) $(value).delay(5000).hide(300);
   });
 });
