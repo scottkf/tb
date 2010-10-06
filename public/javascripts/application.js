@@ -2,7 +2,7 @@ $(document).ready(function() {
   
   
   //github-voice
-  $('a.voice').githubVoice('scottkf', 'tb', {
+  $('a.voice').githubVoice('http://projects.tesoriere.com/api/1/projects/478teabagscom/task_lists', 'web', 'hello!', {
     limit : 3,
     text  : {
       loading      : "Loading ideas...",
