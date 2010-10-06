@@ -1,0 +1,12 @@
+#textile_doc {
+
+	h1, h2, h3, h4, ul, ol { margin: 0; padding: 0; }
+	
+	font-size: 12px;
+	font-family: Helvetica;
+	pre { font-family: "Monaco", "Courier New", "Terminal", monospace; margin: 0; }
+	th { font-size: 14px; font-weight: bold; padding-bottom: 20px; text-align: left;}
+	td { padding-right: 50px; padding-bottom: 10px; }
+	ul { padding-left: 10px; }
+	ol { padding-left: 0px; }
+}

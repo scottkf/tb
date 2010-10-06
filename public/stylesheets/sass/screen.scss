@@ -3,6 +3,8 @@
 
 // To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
+@import "partials/markdown";
+@import "colorbox";
 
 // Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
@@ -12,6 +14,8 @@
 
 @import "compass/utilities/lists/horizontal-list";
 
+@import "compass/css3";
+
 @include blueprint-scaffolding("body.bp");
 
 body.bp {
@@ -19,17 +23,27 @@ body.bp {
   @include blueprint-utilities;
   @include blueprint-interaction;
   
+	.notice {
+		
+	}
+
+
+	header#top, nav, section#content, footer {
+		@include column($blueprint-grid-columns, true);
+	}
 
 	#container {
 		@include container;
-		background: url("../images/logo1.jpg") no-repeat 25px left;
+		margin-top: 10px;
+		background: url("../images/logo1.jpg") no-repeat top left;
 		header#top, footer .logo {
 		  color: black;
 			font-family: "Palatino", "Times", serif;
 			font-size: 8em;
 			font-weight: bold;
 			letter-spacing: -0.03em;
-			text-indent: -99999px;
+			@include transparent;
+			height: 144px;
 			span.small {
 				letter-spacing: normal;
 				font-weight: normal;
@@ -43,7 +57,7 @@ body.bp {
 		}
 		
 		nav {
-		  margin-bottom: 5em;
+		  margin-bottom: 4.5em;
 			ul {
 			 @include horizontal-list;
 			 padding-left: 75px;
@@ -79,7 +93,7 @@ body.bp {
 		  }
 			articles {
 				article {
-				  border-bottom: 1px solid ($background-color - #111);
+				  border-bottom: 1px solid #eee;
 				  margin-bottom: 2em;
 					header {
 						em {
@@ -112,8 +126,22 @@ body.bp {
 	}
 }
 
+
+form.article {
+	@include column($blueprint-grid-columns * (1/2) - 1);
+	input.text, input[type="text"], textarea {
+		@include column($blueprint-grid-columns * (1/2) - 1);				
+	}
+}
+
+
 form {
   @include blueprint-form; 
+
+	aside {
+		float: right;
+		font-style: italic;
+	}
 
 	fieldset {
 		border: 0px;
@@ -124,10 +152,11 @@ form {
     }
 
     input.text, input[type="text"], textarea {
-      width: (floor($blueprint-grid-columns * (1/3)) * $blueprint-grid-width);
+			@include column(floor($blueprint-grid-columns * (1/3)));	
     }
 
-  	input[type="text"], textarea {
+
+  	input[type="text"] {
       &:focus {
   			background-color: #f1fdc6 + #111;   
       }
@@ -146,3 +175,4 @@ form {
 	  padding: 5px;
 	}
 }
+

@@ -52,5 +52,9 @@ class ArticlesController < ApplicationController
     end
     
   end
+  
+  def text_styles
+    render :layout => false
+  end
 
 end

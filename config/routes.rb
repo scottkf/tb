@@ -5,6 +5,9 @@ A487teabagsCom::Application.routes.draw do
   resources :articles, :except => "new"
 
 
+
+  match "/text_styles" => "articles#text_styles"
+
   root :to => "articles#index"
 
   # The priority is based upon order of creation:
