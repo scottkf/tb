@@ -8,4 +8,8 @@ module ApplicationHelper
   end
   
   
+  def current_page
+    (controller_name.downcase + action_name.capitalize) 
+  end
+  
 end

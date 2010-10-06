@@ -1,4 +1,5 @@
-<%= form_for @article, :remote => (params[:action] == 'index') || false do |f| %>
+<%= form_for @article, :html => { :class => 'article' }, :remote => (params[:action] == 'index') || false do |f| %>
+	<aside>We use and &lt;3 markdown for markup, <a href="/text_styles" rel="markdown">details here.</a></aside>
 	<% if @article.errors.any? -%>
 	<%= render :partial => 'shared/errors', :locals => {:object => @article} %>
 	<% end %>
