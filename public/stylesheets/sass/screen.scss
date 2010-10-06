@@ -22,12 +22,14 @@ body.bp {
 
 	#container {
 		@include container;
-		header#top {
+		background: url("../images/logo1.jpg") no-repeat 25px left;
+		header#top, footer .logo {
 		  color: black;
 			font-family: "Palatino", "Times", serif;
 			font-size: 8em;
 			font-weight: bold;
 			letter-spacing: -0.03em;
+			text-indent: -99999px;
 			span.small {
 				letter-spacing: normal;
 				font-weight: normal;
@@ -41,9 +43,10 @@ body.bp {
 		}
 		
 		nav {
-		  margin-bottom: 2em;
+		  margin-bottom: 5em;
 			ul {
 			 @include horizontal-list;
+			 padding-left: 75px;
        li {
          padding-left: 0px;
          padding-right: 1px;
@@ -99,6 +102,11 @@ body.bp {
 			}
 		}
 		footer {
+			margin-top: 1em;
+			text-align: center;
+			.logo {
+				
+			}
 			
 		}
 	}
