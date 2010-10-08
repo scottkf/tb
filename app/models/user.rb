@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.role? :super_admin
   end
   
+  def user_admin?
+    self.role? :super_admin
+  end
+  
   def role?(role)
       return !!self.roles.find_by_name(role.to_s.camelize)
   end
