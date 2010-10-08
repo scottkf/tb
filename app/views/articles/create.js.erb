@@ -22,5 +22,7 @@ if (!$(".notice")) $("body").prepend("<div class='notice'></div>");
 	$(":input:not(input[type = submit])").val("");
 
 	$("#list").prepend("<%= escape_javascript(render @article)%>");
+	
+	$(".notice").delay(3000).hide(300);
 
 <% end -%>

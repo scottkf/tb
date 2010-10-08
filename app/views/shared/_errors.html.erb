@@ -1,6 +1,8 @@
+<% if object.errors.size > 0 %>
 <ul id= "errors">
 	<h4>Try again!</h4>
 	<% object.errors.full_messages.each do |msg| %>
 	<li><%= msg %></li>
 	<% end %>	
 </ul>
+<% end %>

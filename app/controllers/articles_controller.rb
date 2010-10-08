@@ -2,13 +2,11 @@ class ArticlesController < ApplicationController
 
   respond_to :html, :xml
   respond_to :js, :only => [:create]
-
-  before_filter :authenticate_author!, :only => [:create]
+  authorize_resource :only => [:create, :edit, :update]
 
   def index
     @articles = Article.where(:published => true).order('created_at DESC').paginate(:page => params[:page])
     @article = Article.new
-    @author = Author.new
   end
   
 
@@ -17,9 +15,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     # change this to current user logged in
     # current_author.whatever
-    @article.author = current_author
+    @article.user = current_user
     # @article.author = Author.find_or_create_by_email(params[:author])
     if @article.save 
+      ## don't need this because it's handled by JS atm
       flash[:notice] = "Successfully added an article"
     end
     
@@ -27,14 +26,14 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find(params[:id])
-    unless current_author == @article.author
+    unless current_user == @article.user
       redirect_to(:root)
     end
   end
 
   def update
     @article = Article.find(params[:id])
-    if current_author == @article.author
+    if current_user == @article.user
       respond_to do |format|
         if @article.update_attributes(params[:article])
           format.html { redirect_to(articles_path,

@@ -36,6 +36,7 @@ GEM
       ZenTest
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
+    cancan (1.2.0)
     capybara (0.3.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -145,6 +146,7 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-rails
+  cancan
   capybara
   capybara-envjs
   compass

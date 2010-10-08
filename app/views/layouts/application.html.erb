@@ -29,9 +29,10 @@
 			<ul>
 				<li><a href="/">about teabags</a></li>
 				<li><a href="mailto:web@487teabags.com">contact</a></li>
-				<% if author_signed_in? %><li><a href="#add">add</a></li>
-				<li><%= link_to "sign out", destroy_author_session_path %></li>
-				<% else %><li><%= link_to "sign in", new_author_session_path %></li>
+				<% if user_signed_in? %><li><a href="#add">add</a></li>
+				<li><%= link_to "my profile", user_path(current_user)%>
+				<li><%= link_to "sign out", destroy_user_session_path %></li>
+				<% else %><li><%= link_to "sign in", new_user_session_path %></li>
 				<% end %>
 			</ul>
 		</nav>

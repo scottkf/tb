@@ -1,18 +1,18 @@
-<%= form_for @author do |author| %>
+<%= form_for @user do |user| %>
 	<%= field_set_tag do %>
 		<%= f.label "First Name" %>
-		<%= author.text_field :first_name %>
+		<%= user.text_field :first_name %>
 		<%= f.label "Last Name" %>
-		<%= author.text_field :last_name %>
+		<%= user.text_field :last_name %>
 	<% end %>
 	<%= field_set_tag do %>
 		<%= f.label "Email Address" %>
-		<%= author.text_field :email %>
+		<%= user.text_field :email %>
 	<% end %>
 	<%= field_set_tag do %>
 		<%= f.label "Password" %>
-		<%= author.password_field :password %>
+		<%= user.password_field :password %>
 		<%= f.label "Password Confirmation" %>
-		<%= author.password_field :password_confirmation %>
+		<%= user.password_field :password_confirmation %>
 	<% end %>
 <% end %>

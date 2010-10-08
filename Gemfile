@@ -7,6 +7,7 @@ gem "rdiscount"
 gem "mysql"
 gem "compass"
 gem "devise"
+gem "cancan"
 
 group :development, :test do
   gem "rspec"

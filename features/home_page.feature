@@ -15,7 +15,7 @@ Feature: Home Page
 		And I should see "....L"
 		And I should see "steve brown"
 		
-	@javascript
+	@javascript	@adding
 	Scenario: Adding an article
 		Given I am an authenticated user with name "steve" "brown"
 		And I am on the home page
@@ -26,7 +26,7 @@ Feature: Home Page
 		And I should see "this is the body"
 		And I should see "steve brown"
 		
-	@javascript
+	@javascript @editing
 	Scenario: Editing an article
 		Given I am an authenticated user with name "steve" "brown"
 		And I have an article

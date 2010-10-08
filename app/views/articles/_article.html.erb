@@ -1,9 +1,9 @@
 <article>
   <header>
 	<h2><%= article.title %></h2>
-   	<em>by</em> <span class="author"><%= article.author.name %></span>
+   	<em>by</em> <span class="author"><%= article.user.name %></span>
 	on <span class="date"><%= article.created_at.strftime('%B %e, %Y') %>
-	<% if author_signed_in? && (current_author == article.author) %>
+	<% if can? :update, article %>
 	<%= link_to 'Edit this article', edit_article_path(article) %>
 	<% end %>
   </header>
