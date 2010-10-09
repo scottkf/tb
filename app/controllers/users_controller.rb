@@ -119,21 +119,19 @@ class UsersController < ApplicationController
     if params[:user][:password].blank?
       [:password,:password_confirmation,:current_password].collect{|p| params[:user].delete(p) }
     else
-      @user.errors[:base] << "The password you entered is incorrect" unless (@user.valid_password?(params[:user][:current_password]) or current_user.admin?)
+      @user.errors[:base] << "The password you entered is incorrect" unless (@user.valid_password?(params[:user][:current_password]) or current_user.user_admin?)
     end
 
     #finish here
 
-    if params[:user][:role_ids].size == 0
-        @user.errors[:base] << "You must select atleast one role for the user"
-    elsif params[:user][:role_ids].size > 0 and !current_user.user_admin?
+
+    # they cant edit permissions unless they are a superuser
+    if params[:user][:role_ids].length > 0 and !current_user.user_admin?
         @user.errors[:base] << "Sorry!"
     end 
 
     respond_to do |format|
-      if @user.errors[:base].empty?
-        @user.update_attributes(params[:user])
-        @user.role_ids = params[:user][:role_ids]
+      if @user.errors[:base].empty? and @user.update_attributes(params[:user])
         flash[:notice] = "Your account has been updated"
         format.json { render :json => @user.to_json, :status => 200 }
         format.xml  { head :ok }

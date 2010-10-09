@@ -7,7 +7,7 @@ class Ability
     if user.role? :super_admin
       can :see_timestamps, User
       can :manage, :all
-    elsif user.role? :normal
+    elsif user.role? :Normal
       can :read, Article
       # manage articles he owns
       can :create, Article
