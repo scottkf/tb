@@ -14,11 +14,6 @@ User.blueprint do
   email { "#{object.first_name}.#{object.last_name}.#{sn}@example.com".downcase }
   password { "123456" }
   password_confirmation { "#{object.password}" }
-  role
-end
-
-Role.blueprint do
-  name {"Normal"}
 end
 
 Article.blueprint do

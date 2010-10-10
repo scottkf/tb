@@ -5,6 +5,8 @@ end
 Given /^I am an authenticated user with name "([^"]*)" "([^"]*)"$/ do |f, l|
   
   @user = User.make!(:first_name => f, :last_name => l)
+  @user.roles = [Role.find_by_name("Normal")]
+  @user.save
   And %{I go to login}
   And %{I fill in "user_email" with "#{@user.email}"}
   And %{I fill in "user_password" with "#{@user.password}"}
@@ -13,6 +15,7 @@ end
 
 
 Given /^I am an admin$/ do
-  @user.admin = true
+  @user.roles = [Role.find_by_name("SuperAdmin")]
+  @user.save
 end
 

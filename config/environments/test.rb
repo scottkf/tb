@@ -1,3 +1,9 @@
+require 'machinist'
+
+Machinist.configure do |config|
+  config.cache_objects = false
+end
+
 A487teabagsCom::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 

@@ -126,7 +126,7 @@ class UsersController < ApplicationController
 
 
     # they cant edit permissions unless they are a superuser
-    if params[:user][:role_ids].length > 0 and !current_user.user_admin?
+    if params[:user][:role_ids] and params[:user][:role_ids].length > 0 and !current_user.user_admin?
         @user.errors[:base] << "Sorry!"
     end 
 

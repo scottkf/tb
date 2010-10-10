@@ -15,6 +15,13 @@ describe User do
       end
     end
     
+    describe "roles" do
+      it "should have a default role, even if none is given" do
+        @user = User.make
+        @user.roles.should have(1).things
+      end
+    end
+    
     describe "email" do
       it "should be a valid email" do
         @user = User.new(valid_author_attributes)
