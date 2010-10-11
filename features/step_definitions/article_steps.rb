@@ -20,3 +20,8 @@ Given /^I authored the article$/ do
   @article.save
 end
 
+Given /^the article has comments disabled$/ do
+  @article.comments_disabled = true
+end
+
+
