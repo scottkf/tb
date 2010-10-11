@@ -13,6 +13,9 @@ module NavigationHelpers
     
     when /the articles page/
       '/articles'
+    
+    when /the users page/
+      '/users/'
 
     when /register/
       '/users/sign_up'

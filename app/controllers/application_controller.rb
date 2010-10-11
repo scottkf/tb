@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     flash[:notice] = exception.message
     redirect_to new_user_session_url
   end
-  
+
   def respond_to_not_found(*types)
     asset = self.controller_name.singularize
     flick = case self.action_name

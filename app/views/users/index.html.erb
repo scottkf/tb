@@ -5,9 +5,10 @@
 		<td><%= link_to_if(can?(:read, User), "#{u.name}", user_path(u.id)) {} %></td>
 		<td><%= "#{u.email}" %></td>
 		<td><%= "#{u.roles.collect{|r| r.name}}" %></td>
-		<td><%= link_to_if(can?(:edit, User), image_tag("/images/edit_icon.gif"), edit_user_path(u.id)) {} %></td>
+		<td class="<%= u.email %>"><%= link_to_if(can?(:edit, User), "Edit", edit_user_path(u.id)) {} %></td>
 		<!-- <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td> -->
 	</tr>
 	<% end %>
+	<!-- <tr><td><%= link_to_if(can?(:create, User), "Create User", new_user_path)%></td></tr> -->
 </tbody>
 </table>

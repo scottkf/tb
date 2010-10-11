@@ -17,8 +17,10 @@ describe User do
     
     describe "roles" do
       it "should have a default role, even if none is given" do
-        @user = User.make
-        @user.roles.should have(1).things
+        @user = User.create(valid_author_attributes)
+        @user.roles.each do |r|
+          r.name.should == "Normal" 
+        end
       end
     end
     

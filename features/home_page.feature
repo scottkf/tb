@@ -27,7 +27,7 @@ Feature: Home Page
 		And I should see "this is the body"
 		And I should see "jim johnson"
 		
-	@javascript @editing
+	@editing
 	Scenario: Editing an article
 		Given I am an authenticated user with name "lifetime" "sack"
 		And I have an article

@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
 
   
   def default_role
-    self.roles << Role.find_by_name("Normal") unless self.roles.size > 0
+    self.role_ids = [2] unless self.roles.size > 0
   end
   
   def admin_role
-    self.roles << Role.find_by_name("SuperAdmin")
+    self.role_ids = [1]
   end
   
   def name
