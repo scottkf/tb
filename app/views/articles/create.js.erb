@@ -1,5 +1,5 @@
 if ($("#errors").length == 0) $("#new_article").prepend("<ul id='errors'></ul>")
-if (!$(".notice")) $("body").prepend("<div class='notice'></div>");
+if ($(".notice").length == 0) $("body").prepend("<div class='notice'></div>");
 <% if @article.errors.any? -%>
 	/*Hide the flash notice div*/
 	$(".notice").hide(300);
@@ -22,5 +22,8 @@ if (!$(".notice")) $("body").prepend("<div class='notice'></div>");
 	$(":input:not(input[type = submit])").val("");
 
 	$("#list").prepend("<%= escape_javascript(render @article)%>");
+	<% flash[:notice] = '' %>
+	
+	$(".notice").delay(3000).hide(300);
 
 <% end -%>

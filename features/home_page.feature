@@ -4,6 +4,7 @@ Feature: Home Page
 	In order to view the most recent articles
 	I need to see the latest articles
 	
+	@index
 	Scenario: 1 article
 		Given I have an article 
 		And the article has a title "hello"
@@ -15,20 +16,20 @@ Feature: Home Page
 		And I should see "....L"
 		And I should see "steve brown"
 		
-	@javascript
+	@javascript	@adding
 	Scenario: Adding an article
-		Given I am an authenticated user with name "steve" "brown"
+		Given I am an authenticated user with name "jim" "johnson"
 		And I am on the home page
 		When I fill in "article[title]" with "hello"
 		And I fill in "article[body]" with "_this is the body_"
 		And I press "submit"
 		Then I should see "hello"
 		And I should see "this is the body"
-		And I should see "steve brown"
+		And I should see "jim johnson"
 		
-	@javascript
+	@editing
 	Scenario: Editing an article
-		Given I am an authenticated user with name "steve" "brown"
+		Given I am an authenticated user with name "lifetime" "sack"
 		And I have an article
 		And the article has a title "hello"
 		And the article has a body "....L"
@@ -40,7 +41,7 @@ Feature: Home Page
 		And I press "submit"
 		Then I should see "hello"
 		And I should see "this is the body"
-		And I should see "steve brown"
+		And I should see "lifetime sack"
 		
 		
 

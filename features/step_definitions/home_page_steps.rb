@@ -11,12 +11,12 @@ Given /^the article has a body "([^"]*)"$/ do |body|
 end
 
 Given /^the article has an author "([^"]*)" "([^"]*)"$/ do |f, l|
-  @article.author = Author.make(:first_name => f, :last_name => l)
+  @article.user = User.make!(:first_name => f, :last_name => l)
   @article.save
 end
 
 Given /^I authored the article$/ do
-  @article.author = @author
+  @article.user = @user
   @article.save
 end
 

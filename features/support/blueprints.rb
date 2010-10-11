@@ -7,7 +7,8 @@ require 'machinist/active_record'
 #     title { "Post #{sn}" }
 #     body  { "Lorem ipsum..." }
 #   end
-Author.blueprint do 
+
+User.blueprint do 
   first_name { "alf" }
   last_name { "jones" }
   email { "#{object.first_name}.#{object.last_name}.#{sn}@example.com".downcase }
@@ -18,5 +19,5 @@ end
 Article.blueprint do
   title {"some title"}
   body {"_here is some content_"}
-  author
+  user
 end

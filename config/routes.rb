@@ -1,7 +1,9 @@
 A487teabagsCom::Application.routes.draw do
 
-  devise_for :authors
-
+  # devise_for :authors,  :controllers => { :registrations => "authors/registrations" }
+  devise_for :users
+  resources :users
+  
   resources :articles, :except => "new"
 
 

@@ -32,6 +32,7 @@ GEM
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
+    cancan (1.2.0)
     compass (0.10.5)
       haml (>= 3.0.4)
     devise (1.1.2)
@@ -80,6 +81,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   compass
   devise
   mysql

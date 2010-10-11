@@ -7,6 +7,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
+require "#{Rails.root}/db/seeds.rb"
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
@@ -57,4 +58,8 @@ if defined?(ActiveRecord::Base)
     DatabaseCleaner.strategy = :truncation
   rescue LoadError => ignore_if_database_cleaner_not_present
   end
+end
+
+at_exit do
+  DatabaseCleaner.clean
 end
