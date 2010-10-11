@@ -10,16 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101008140748) do
+ActiveRecord::Schema.define(:version => 20101011180011) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.text     "rendered_body"
-    t.integer  "user_id",                         :null => false
-    t.boolean  "published",     :default => true
+    t.integer  "user_id",                              :null => false
+    t.boolean  "published",         :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "comments_disabled", :default => false
   end
 
   create_table "roles", :force => true do |t|

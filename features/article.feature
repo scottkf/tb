@@ -1,11 +1,11 @@
 @home
-Feature: Home Page
+Feature: Articles
 	As a user
 	In order to view the most recent articles
 	I need to see the latest articles
 	
 	@index
-	Scenario: 1 article
+	Scenario: Home page
 		Given I have an article 
 		And the article has a title "hello"
 		And the article has a body "....L"
@@ -15,6 +15,37 @@ Feature: Home Page
 		Then I should see "hello"
 		And I should see "....L"
 		And I should see "steve brown"
+	# 	
+	# @show
+	# Scenario: Showing an individual article with comments
+	# 	Given I have an article 
+	# 	And the article has a title "hello"
+	# 	And the article has a body "....L"
+	# 	And the article has an author "steve" "brown"
+	# 	And I am not authenticated
+	# 	And I go to the homepage
+	# 	When I follow "hello"
+	# 	Then I should see "hello"
+	# 	And I should see "....L"
+	# 	And I should see "steve brown"
+	# 	And show me the page
+	# 	And I should see "View the discussion thread"
+
+	@show
+	Scenario: Showing an individual article with comments disabled
+		Given I have an article 
+		And the article has a title "hello"
+		And the article has a body "....L"
+		And the article has an author "steve" "brown"
+		And the article has comments disabled
+		And I am not authenticated
+		And I go to the homepage
+		When I follow "hello"
+		Then I should see "hello"
+		And I should see "....L"
+		And I should see "steve brown"
+		And I should not see "View the discussion thread"
+
 		
 	@javascript	@adding
 	Scenario: Adding an article
