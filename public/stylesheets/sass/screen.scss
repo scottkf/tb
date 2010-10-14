@@ -27,6 +27,29 @@ body.bp {
 		
 	}
 
+	.pagination {
+		font-size: 1.5em;
+		margin-top: 1em;
+		.previous_page, .next_page {
+			
+		}
+		.previous_page {
+			
+		}
+		
+		.next_page {
+			
+		}
+
+		a[rel="next"] {
+			
+		}
+		a {
+			
+		}
+
+	}
+
 
 	header#top, nav, section#content, footer {
 		@include column($blueprint-grid-columns, true);
