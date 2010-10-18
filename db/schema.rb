@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20101018120638) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "comments_disabled", :default => false
-    t.integer  "category_id"
+    t.integer  "category_id",                          :null => false
   end
 
   create_table "categories", :force => true do |t|

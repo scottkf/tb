@@ -10,7 +10,7 @@ class CreateCategoriesAndMore < ActiveRecord::Migration
     end
     
     add_index :categories, :ancestry
-    add_column :articles, :category_id, :integer
+    add_column :articles, :category_id, :integer, { :null => false }
     
     # rename normal role
     r = Role.find(2)
@@ -23,9 +23,13 @@ class CreateCategoriesAndMore < ActiveRecord::Migration
   end
 
   def self.down
+    remove_index :categories, :ancestry
     drop_table :categories
 
-    remove_index :categories, :ancestry
     remove_column :articles, :category_id
+    r = Role.find(2)
+    r.name = "Normal"
+    r.save
+    Role.find(3).destroy
   end
 end

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Category do
-  
   before(:all) do
     @layouts = Dir[Rails.root.join("app", "views", "layouts","*")]
   end
@@ -13,6 +12,7 @@ describe Category do
     end
   end
   
+
   context "#valid" do
     describe "presence" do
       it "should have a valid name" do

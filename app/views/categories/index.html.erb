@@ -1,0 +1,13 @@
+<table>
+	<tbody>
+	<% @categories.each do |u| %>
+	<tr>
+		<td><%= link_to_if(can?(:read, Category), "#{u.name}", user_path(u.id)) {} %></td>
+		<td><%= "#{u.email}" %></td>
+		<td class="<%= u.email %>"><%= link_to_if(can?(:edit, Category), "Edit", edit_user_path(u.id)) {} %></td>
+		<!-- <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td> -->
+	</tr>
+	<% end %>
+	<tr><td><%= link_to_if(can?(:create, Category), "Create Category", new_user_path)%></td></tr>
+</tbody>
+</table>

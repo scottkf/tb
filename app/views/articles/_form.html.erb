@@ -12,5 +12,10 @@
 		<%= f.label :body%>
 		<%= f.text_area :body %>
 	<% end %>
+	
+	<%= field_set_tag do %>
+		<%= f.label :category %>
+		<%= f.select :category_id, @categories %>
+	<% end %>
 	<%= submit_tag (params[:action] == 'index' && 'Post') || 'Edit', :id => "submit" %>
 <% end %>

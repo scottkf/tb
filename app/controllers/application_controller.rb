@@ -6,6 +6,30 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_url
   end
 
+
+  def main_categories
+    Category.roots
+  end
+  
+  #returns all direct descendants of category
+  def sub_categories(name)
+    Category.find_by_name(name).children
+  end
+
+  #returns an array of hashes to be used for a form
+  def arranged_categories
+    
+    array = Array.new
+    x = lambda { |k| 
+      array << [("-" * k.depth.to_i)+ " " + k.name, k.id]
+      if k.has_children?
+        k.children.map(&x) 
+      end
+    }
+    main_categories.map(&x)
+    array
+  end
+
   def respond_to_not_found(*types)
     asset = self.controller_name.singularize
     flick = case self.action_name

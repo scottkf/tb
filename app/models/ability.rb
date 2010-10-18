@@ -19,6 +19,7 @@ class Ability
       can [:read, :create, :update], Category
     else
       can :read, Article
+      can :read, Category
     end
   end
 end

@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
   
   validates :title, :presence => true
   validates :body, :presence => true
+  validates :user, :presence => true
+  validates :category, :presence => true
   before_save :markdown
 
   def markdown

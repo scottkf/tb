@@ -20,6 +20,7 @@ Article.blueprint do
   title {"some title"}
   body {"_here is some content_"}
   user
+  category
 end
 
 Category.blueprint do
