@@ -50,6 +50,7 @@ Feature: Articles
 	@javascript	@adding
 	Scenario: Adding an article
 		Given I am an authenticated user with name "jim" "johnson"
+		And I am an editor
 		And I am on the home page
 		When I fill in "article[title]" with "hello"
 		And I fill in "article[body]" with "_this is the body_"
@@ -61,6 +62,7 @@ Feature: Articles
 	@editing
 	Scenario: Editing an article
 		Given I am an authenticated user with name "lifetime" "sack"
+		And I am an editor
 		And I have an article
 		And the article has a title "hello"
 		And the article has a body "....L"

@@ -17,3 +17,7 @@ Given /^I am an admin$/ do
   @user.save
 end
 
+Given /^I am an editor$/ do
+  @user.roles = [Role.find_by_name("Editor")]
+  @user.save
+end

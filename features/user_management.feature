@@ -34,6 +34,7 @@ Feature: User page
 	@editing
 	Scenario: Editing a user
 		Given I am an authenticated user with name "steve" "brown"
+		And I am an admin
 		And I am on the users page
 		And I follow "Edit"
 		When I fill in "user[first_name]" with "hello"

@@ -8,6 +8,7 @@ gem "mysql"
 gem "compass"
 gem "devise"
 gem "cancan"
+gem "ancestry", :git => "git://github.com/scottkf/ancestry.git", :branch => "master"
 
 group :development, :test do
   gem "rspec"

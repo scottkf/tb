@@ -7,7 +7,7 @@ class Ability
     if user.role? :super_admin
       can :see_timestamps, User
       can :manage, :all
-    elsif user.role? :Normal
+    elsif user.role? :editor
       can :read, Article
       # manage articles he owns
       can :create, Article
@@ -15,6 +15,8 @@ class Ability
       # can manage his account
       can :manage, User, :id => user.id
       can :see_timestamps, User, :id => user.id
+      # can manage, but not delete categories
+      can [:read, :create, :update], Category
     else
       can :read, Article
     end

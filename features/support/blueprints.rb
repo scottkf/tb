@@ -21,3 +21,10 @@ Article.blueprint do
   body {"_here is some content_"}
   user
 end
+
+Category.blueprint do
+  name {"hello"}
+  layout {"filename"}
+  description {"this is a description"}
+  url {"valid"}
+end

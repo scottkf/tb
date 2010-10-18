@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/scottkf/ancestry.git
+  revision: d8371ebb9d1295dd24155ceca1e13799c76f2149
+  specs:
+    ancestry (1.2.1.beta.1)
+      activerecord (>= 2.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -144,6 +151,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry!
   autotest
   autotest-rails
   cancan

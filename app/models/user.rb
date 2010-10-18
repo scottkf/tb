@@ -16,17 +16,19 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, :email => true
 
   
-  def default_role
-    self.role_ids = [2] unless self.roles.size > 0
+  def name
+    self.first_name + " " + self.last_name
+  end
+
+
+  def editor_role
+    self.role_ids = [2]
   end
   
   def admin_role
     self.role_ids = [1]
   end
   
-  def name
-    self.first_name + " " + self.last_name
-  end
   
   def admin? 
     self.role? :super_admin
@@ -36,6 +38,12 @@ class User < ActiveRecord::Base
     self.role? :super_admin
   end
   
+
+  def default_role
+    self.role_ids = [3] unless self.roles.size > 0
+  end
+
+
 
   def role?(role)
       return !!self.roles.find_by_name(role.to_s.camelize)
