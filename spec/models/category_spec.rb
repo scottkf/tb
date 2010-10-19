@@ -47,7 +47,7 @@ describe Category do
         c.save
         c.should_not be_valid
         c.should have(1).error_on(:layout)
-        c.layout = "hello"
+        c.layout = "thisissomethingnoonewilleveruse"
         c.save
         c.should be_valid        
       end
@@ -63,7 +63,7 @@ describe Category do
     end
     describe "layout" do
       it "should be a valid filename (or create one if it doesn't exist)" do
-        c = Category.make!(:layout => "default")
+        c = Category.make!(:layout => "thisisanothernamenoonewilleveruse")
         File.exists?(Rails.root.join("app", "views", "layouts","#{c.layout}.html.erb")).should be true
       end
     end

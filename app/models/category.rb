@@ -13,10 +13,6 @@ class Category < ActiveRecord::Base
   validates_format_of :url, :with => /\A[a-zA-Z0-9]+\z/, :message => "No special characters are allowed"
   validates_length_of :url, :in => 3..10, :too_short => "Must have atleast 3 characters", :too_long => "Must have 10 or fewers characters"
 
-  def to_array
-    [[self.name, self.id, self.depth],self.has_children? ? self.children.map { |c| c.to_array } : nil]
-  end
-
   private
   def layout_exists
     if !File.exists?(Rails.root.join("app", "views", "layouts", "#{self.layout}.html.erb"))

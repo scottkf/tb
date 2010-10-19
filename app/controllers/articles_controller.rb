@@ -7,6 +7,8 @@ class ArticlesController < ApplicationController
     @articles = Article.paginate :page => params[:page], :per_page => 10, :conditions => { :published => true }, :order => 'created_at DESC'
     @article = Article.new
     @categories = arranged_categories
+    # @categories = arranged_categories if 
+    # @categories = User.accessible_by(current_ability, :index).limit(20)
   end
   
 
@@ -26,6 +28,7 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find(params[:id])
+    @categories = arranged_categories
     authorize! :manage, Article
   end
 

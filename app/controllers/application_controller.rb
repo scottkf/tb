@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
 
   #returns an array of hashes to be used for a form
   def arranged_categories
-    
     array = Array.new
     x = lambda { |k| 
       array << [("-" * k.depth.to_i)+ " " + k.name, k.id]

@@ -5,6 +5,28 @@ GIT
     ancestry (1.2.1.beta.1)
       activerecord (>= 2.1.0)
 
+GIT
+  remote: http://github.com/jnicklas/capybara.git
+  revision: 8b4857da8119532d0156b721b10563f812e91b6d
+  specs:
+    capybara (0.4.0.rc)
+      celerity (>= 0.7.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.2)
+
+GIT
+  remote: http://github.com/robholland/cucumber-rails.git
+  revision: c18072188acb4b902a36580a32a63fba2d074c93
+  specs:
+    cucumber-rails (0.3.3)
+      aruba (~> 0.2.2)
+      cucumber (~> 0.9.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -38,22 +60,22 @@ GEM
     activesupport (3.0.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    aruba (0.2.3)
+      background_process
+      cucumber (~> 0.9.0)
     autotest (4.3.2)
     autotest-rails (4.1.0)
       ZenTest
+    background_process (1.2)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     cancan (1.2.0)
-    capybara (0.3.9)
-      culerity (>= 0.2.4)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (>= 0.0.3)
     capybara-envjs (0.1.6)
       capybara (>= 0.3.9)
       envjs (>= 0.3.7)
+    celerity (0.8.2)
+    childprocess (0.1.3)
+      ffi (~> 0.6.3)
     compass (0.10.5)
       haml (>= 3.0.4)
     configuration (1.1.0)
@@ -63,8 +85,6 @@ GEM
       gherkin (~> 2.2.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
-    cucumber-rails (0.3.2)
-      cucumber (>= 0.8.0)
     culerity (0.2.12)
     database_cleaner (0.5.2)
     devise (1.1.2)
@@ -132,8 +152,9 @@ GEM
     rspec-rails (2.0.0.beta.22)
       rspec (= 2.0.0.beta.22)
     rubyzip (0.9.4)
-    selenium-webdriver (0.0.28)
-      ffi (>= 0.6.1)
+    selenium-webdriver (0.0.29)
+      childprocess (>= 0.0.7)
+      ffi (~> 0.6.3)
       json_pure
       rubyzip
     stackdeck (0.2.0)
@@ -146,6 +167,8 @@ GEM
     warden (0.10.7)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
+    xpath (0.1.2)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -155,11 +178,11 @@ DEPENDENCIES
   autotest
   autotest-rails
   cancan
-  capybara
+  capybara!
   capybara-envjs
   compass
   cucumber
-  cucumber-rails
+  cucumber-rails!
   database_cleaner
   devise
   launchy

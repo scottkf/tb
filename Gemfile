@@ -17,8 +17,8 @@ group :development, :test do
   gem "autotest-rails"
   gem "cucumber"         
   gem "database_cleaner"
-  gem "cucumber-rails"  
-  gem "capybara"
+  gem "cucumber-rails", :git => "http://github.com/robholland/cucumber-rails.git"  
+  gem "capybara", :git => "http://github.com/jnicklas/capybara.git"
   gem "capybara-envjs"
   gem "launchy"
   gem 'machinist', '>= 2.0.0.beta2'
