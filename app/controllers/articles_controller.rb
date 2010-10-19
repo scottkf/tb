@@ -6,9 +6,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.paginate :page => params[:page], :per_page => 10, :conditions => { :published => true }, :order => 'created_at DESC'
     @article = Article.new
-    @categories = arranged_categories
-    # @categories = arranged_categories if 
-    # @categories = User.accessible_by(current_ability, :index).limit(20)
+    @categories = arranged_categories if current_user and !current_user.regular?
   end
   
 

@@ -22,8 +22,9 @@ class CategoriesController < ApplicationController
   end
 
   def list
-    @layout = params[:category_url]
-    if File.exists? Dir[Rails.root.join("app", "views", "layouts","#{@layout}")]
+    @category = Category.find_by_name(params[:category_url])
+    if File.exists? Rails.root.join("app", "views", "layouts","#{@category.layout}.html.erb")
+      @articles = Article.find_by_category_id(@category.id)
       #get all articles belonging to category, paginated
       #check if the url is a subcategory, if it is, just get subcats
     else

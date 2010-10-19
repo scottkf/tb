@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
     self.role_ids = [1]
   end
   
+  def regular?
+    self.role? :regular
+  end
   
   def admin? 
     self.role? :super_admin
