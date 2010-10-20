@@ -17,9 +17,13 @@ class Ability
       can :see_timestamps, User, :id => user.id
       # can manage, but not delete categories
       can [:read, :create, :update], Category
+    elsif user.role? :regular
+      can :read, Article
+      can [:index, :list], Category
+      can :manage, User, :id => user.id
     else
       can :read, Article
-      can :read, Category
+      can [:index, :list], Category
     end
   end
 end

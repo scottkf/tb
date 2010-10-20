@@ -27,5 +27,5 @@ Category.blueprint do
   name {"hello"}
   layout {"crazylongfilenamenoonewilluse"}
   description {"this is a description"}
-  url {"valid"}
+  url {"hello#{sn}"}
 end

@@ -14,7 +14,6 @@ Feature: User Accounts
 		And I fill in "user_password_confirmation" with "<password>"
 		And I press "Sign in"
 		Then I should see "You have signed up successfully"
-
 		Examples:
 		  | first_name 			| last_name 			| email           | password   |
 		  | bob							| carr						| testing@man.net | secretpass |

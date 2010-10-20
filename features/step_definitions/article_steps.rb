@@ -7,9 +7,14 @@ Given /^I have a category with name "([^"]*)"$/ do |name|
 end
 
 Given /^the article has a category with name "([^"]*)"$/ do |name|
-  @article.category = Category.make!(:name => name)
+  @category = Category.make!(:name => name)
+  @article.category = @category
 end
 
+Given /^the article has a category with name "([^"]*)" and url "([^"]*)"$/ do |name, url|
+  @category = Category.make!(:name => name, :url => url)
+  @article.category = @category
+end
 
 Given /^the article has a title "([^"]*)"$/ do |title|
   @article.title = title

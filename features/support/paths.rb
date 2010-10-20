@@ -16,7 +16,13 @@ module NavigationHelpers
     
     when /the users page/
       '/users/'
+      
+    when /the category page/
+      '/categories/'
 
+    when /the (.*) category page/
+      articles_category_url($1)
+      
     when /register/
       '/users/sign_up'
     

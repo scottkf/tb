@@ -4,7 +4,7 @@
 <%= will_paginate @articles %>
 
 <a name="add"></a>
-<% if user_signed_in? %>
+<% if can? :create, Article %>
 <h3>Something to add?</h3>
 <%= render :partial => "form" %>
 <% end %>

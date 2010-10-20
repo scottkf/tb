@@ -9,18 +9,18 @@
 
 	<%= field_set_tag do %>
 		<%= f.label :description%>
-		<%= f.text_area :description %>
+		<%= f.text_field :description %>
 	<% end %>
 
 	<%= field_set_tag do %>
 		<%= f.label :url%>
-		<%= f.text_area :url %>
+		<%= f.text_field :url %>
 	<% end %>
 
 	<%= field_set_tag do %>
 		<%= f.label :layout%>
 		<p>Just the basename, i.e.: "layout", would use layouts/layout.html.erb</p>
-		<%= f.text_area :layout %>
+		<%= f.text_field :layout %>
 	<% end %>
 	<%= submit_tag (params[:action] == 'new' && 'Create') || 'Edit', :id => "submit" %>
 <% end %>

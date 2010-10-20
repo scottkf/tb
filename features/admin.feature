@@ -5,7 +5,7 @@ Feature: Admin
   I need to have access to all the articles
 
 
-	Scenario: I can edit all the articles
+	Scenario: I can edit all articles (including others)
 		# Given the following articles exist:
 		#   | Title     | Body 	| User | 
 		#   | Article 1 | _hello_ | last_name: apple | 
@@ -17,9 +17,9 @@ Feature: Admin
 		And I am an authenticated user with name "steve" "brown"
 		And I am an admin
 		When I go to the homepage
-  	Then I should see "Edit this article"
+  		Then I should see "Edit this article"
 	
 	
-	
+	#more crap about what admins can do, right now contained in the other features
 
   
