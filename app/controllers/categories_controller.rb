@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  load_and_authorize_resource :except => [:list]
+  load_and_authorize_resource :except => [:list, :layouts]
 
   
   def index
@@ -70,5 +70,5 @@ class CategoriesController < ApplicationController
       redirect_to articles_path
     end
   end
-
+  
 end

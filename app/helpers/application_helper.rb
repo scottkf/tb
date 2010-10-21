@@ -12,7 +12,14 @@ module ApplicationHelper
     (controller_name.downcase + action_name.capitalize) 
   end
   
-  
+  def autocomplete(data, selector)
+    output = <<-HTML
+<script type="text/javascript">
+var data = "#{data}".split(" ");
+$("#{selector}").autocomplete(data)
+</script>
+HTML
+  end
 
 
 
