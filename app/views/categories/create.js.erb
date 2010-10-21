@@ -1,34 +1,22 @@
-if ($("#category_errors").length == 0) $("#new_article").prepend("<ul id='category_errors'></ul>")
-if ($(".notice").length == 0) $("body").prepend("<div class='notice'></div>");
+if ($("#errors").length == 0) $("#new_category").prepend("<ul id='errors'></ul>");
 <% if @category.errors.any? -%>
-	/*Hide the flash notice div*/
-	$(".notice").hide(300);
-
-
-	$("#category_errors").replaceWith("<%= escape_javascript(render :partial => 'shared/errors', :locals => {:object => @category})%>");
-	$("#category_errors").hide(0);
-	$("#category_errors").show(300);
+	$("#errors").replaceWith("<%= escape_javascript(render :partial => 'shared/errors', :locals => {:object => @category})%>");
+	$("#errors").hide(0);
+	$("#errors").show(300);
 
 <% else -%>
-	$("#category_errors").hide(300);
-
-	/*Update the html of the div flash_notice with the new one*/
-	$(".notice").html("<%= escape_javascript(flash[:notice])%>");
-
-	/*Show the flash_notice div*/
-	$(".notice").show(300);
+	$("#errors").hide(300);
 
 	/*Clear the entire form*/
 	$(":input:not(input[type = submit])").val("");
 	
-	/*Remove the entire form*/
-	$('#new_article').remove();
+	/*Remove the entire form and close colorbox*/
+  $.colorbox.close();
 
 	$('#article_category_id').append(
-      $('<option></option>').val("<%= escape_javascript(@category.id) %>").html("<%= escape_javascript(@category.name) %>")
+      $('<option></option>')
+      .val("<%= @category.id %>")
+      .html("<%= escape_javascript(@category.name) %>")
+      .attr('selected', 'selected')
   );
-	<% flash[:notice] = '' %>
-	
-	$(".notice").delay(3000).hide(300);
-
 <% end -%>

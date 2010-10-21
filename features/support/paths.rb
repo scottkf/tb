@@ -23,6 +23,9 @@ module NavigationHelpers
     when /the (.*) category page/
       articles_category_url($1)
       
+    when /the article page for "([^"]*)"/
+      article_path(Article.find_by_title($1))
+
     when /register/
       '/users/sign_up'
     

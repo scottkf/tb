@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    render :layout => "#{@article.category.layout}"
   end
 
   def create

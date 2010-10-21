@@ -15,9 +15,8 @@
 	
 	<%= field_set_tag do %>
 		<%= f.label Category %>
-		<%= link_to_if(can?(:manage, Category), "add a new category", new_category_path + "?js=true", :remote => true, :class => 'js') {} %>
+		<%= link_to_if(can?(:create, Category), "add a new category", new_category_path + "?js=true", :rel => "ajax", :class => 'js') {} %>
 		<%= f.select :category_id, @categories %>
 	<% end %>
-	<div id="add_category"></div>
 	<%= submit_tag (params[:action] == 'index' && 'Post') || 'Edit', :id => "submit" %>
 <% end %>

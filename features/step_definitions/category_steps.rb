@@ -11,3 +11,9 @@ end
 Given /^the layout has "([^"]*)"$/ do |content|
   File.open(Rails.root.join("app", "views", "layouts","#{@category.layout}.html.erb"), 'w') {|f| f.write(content) }
 end
+
+
+When /^I wait until "([^"]*)" is visible$/ do |selector|
+  page.has_css?("#{selector}", :visible => true)
+end
+

@@ -86,9 +86,19 @@ Feature: Category
 	
 	@individualarticle
 	Scenario: Viewing an individual article should be shown with the layout
-	  Given context
-	  When event
-	  Then outcome
+	 	Given I am not authenticated
+		# it shouldn't matter --^
+		And I have an article
+		And the article has a title "hello"
+		And the article has a body "....L"
+		And the article has a category with name "DancingBeetle" and url "beetle"
+		And the article has an author "steve" "brown"
+		And the layout has "<html><body><h1>UNCOMMONSHIBBOLETH</h1><%= yield %></body></html>"
+	 	When I go to the article page for "hello" 
+	 	Then I should see "UNCOMMONSHIBBOLETH" within "h1"
+		And I should see "hello"
+		And I should see "....L"
+		And show me the page
 	
 	
 	
@@ -104,15 +114,16 @@ Feature: Category
 		And the article has a category with name "DancingBeetle"
 		And I authored the article
 		And I go to the homepage
-	  When I am on the homepage
+	  	When I am on the homepage
 		And I follow "Edit this article"
 		And I follow "add a new category"
+		And I wait until "new_category" is visible
 		And I fill in "category[name]" with "hello"
 		And I fill in "category[description]" with "goodbye"
 		And I fill in "category[url]" with "hello2"
 		And I fill in "category[layout]" with "hello"
 		And I press "submit"
-	  Then outcome
+	  	Then "hello" should be selected for "article_category_id"
 	
 	
 	

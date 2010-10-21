@@ -7,6 +7,7 @@ $(document).ready(function() {
     if ($(value)) $(value).delay(5000).slideUp(300);
   });
 
+  jQuery("a[rel='ajax']").colorbox({transition: "elastic", width: "55%", rel: "nofollow"})
   jQuery("a[rel='markdown']").colorbox({transition:"elastic", width:"55%", rel:"nofollow"});
 
 });

@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    render :layout => nil if params[:js]
   end
 
   def edit
@@ -21,16 +22,17 @@ class CategoriesController < ApplicationController
     if @category.save
       flash[:notice] = "The category has been created"
       respond_to do |format|
-        format.json { render :json => @category.to_json, :status => 200 }
+        format.js
         format.xml  { head :ok }
         format.html { redirect_to categories_url }
       end
     else
-      respond_to do |format|
-        format.json { render :text => "Could not create category", :status => :unprocessable_entity } # placeholder
-        format.xml  { head :ok }
-        format.html { render :action => :new, :status => :unprocessable_entity }
-      end
+      # render :action => :new
+      # respond_to do |format|
+      #   format.json { render :text => "Could not create category", :status => :unprocessable_entity } # placeholder
+      #   format.xml  { head :ok }
+      #   format.html { render :action => :new, :status => :unprocessable_entity }
+      # end
     end
   end
 
