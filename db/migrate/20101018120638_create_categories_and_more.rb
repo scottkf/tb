@@ -13,9 +13,9 @@ class CreateCategoriesAndMore < ActiveRecord::Migration
     add_column :articles, :category_id, :integer, :null => false, :default => 1
     change_column :articles, :category_id, :integer, :null => false 
     
-    #create default category
-    c = Category.create(:name => "Default", :layout => "application", :description => "default category", :url => "default")
-    Article.all.each {|a| a.category_id = c.id; a.save }
+    # #create default category
+    # c = Category.create(:name => "Default", :layout => "application", :description => "default category", :url => "default")
+    # Article.all.each {|a| a.category_id = c.id; a.save }
     
     # rename normal role
     r = Role.find(2)
