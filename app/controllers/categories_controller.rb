@@ -27,12 +27,11 @@ class CategoriesController < ApplicationController
         format.html { redirect_to categories_url }
       end
     else
-      # render :action => :new
-      # respond_to do |format|
-      #   format.json { render :text => "Could not create category", :status => :unprocessable_entity } # placeholder
-      #   format.xml  { head :ok }
-      #   format.html { render :action => :new, :status => :unprocessable_entity }
-      # end
+      respond_to do |format|
+        format.js
+        format.xml  { head :ok }
+        format.html { render :action => :new, :status => :unprocessable_entity }
+      end
     end
   end
 
