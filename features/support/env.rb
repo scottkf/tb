@@ -7,7 +7,6 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
-require "#{Rails.root}/db/seeds.rb"
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
@@ -20,12 +19,14 @@ require 'capybara/session'
 require 'cucumber/rails/capybara_javascript_emulation'
 require 'capybara/envjs'
 require "selenium-webdriver"
+
 # Lets you click links with onclick javascript handlers without using @culerity or @javascript
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
+# Capybara.javascript_driver = :envjs
 # If you set this to false, any error raised from within your app will bubble 
 # up to your step definition and out to cucumber unless you catch it somewhere
 # on the way. You can make Rails rescue errors and render error pages on a
@@ -55,7 +56,7 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 if defined?(ActiveRecord::Base)
   begin
     require 'database_cleaner'
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, {:except => %w[roles]}
   rescue LoadError => ignore_if_database_cleaner_not_present
   end
 end

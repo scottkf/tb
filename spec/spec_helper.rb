@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'features/support/blueprints'
 
-require "#{Rails.root}/db/seeds.rb"
+# require "#{Rails.root}/db/seeds.rb"
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,

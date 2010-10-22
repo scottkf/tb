@@ -12,5 +12,19 @@
 		<%= f.label :body%>
 		<%= f.text_area :body %>
 	<% end %>
+	
+	<%= field_set_tag do %>
+		<p>A unique URL for each article (will be id-title if none given)<br />
+			<small>i.e.: articles/1-permalink-title</small>
+		</p>
+		<%= f.label :permalink %>
+		<%= f.text_field :permalink %>
+	<% end %>
+
+	<%= field_set_tag do %>
+		<%= f.label Category %>
+		<%= link_to_if(can?(:create, Category), "add a new category", new_category_path + "?js=true", :rel => "ajax", :class => 'js') {} %>
+		<%= f.select :category_id, @categories %>
+	<% end %>
 	<%= submit_tag (params[:action] == 'index' && 'Post') || 'Edit', :id => "submit" %>
 <% end %>

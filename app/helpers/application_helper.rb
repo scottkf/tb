@@ -12,7 +12,15 @@ module ApplicationHelper
     (controller_name.downcase + action_name.capitalize) 
   end
   
-  
+  def autocomplete(data, selector)
+    output = <<-HTML
+var data = "#{data}".split(" ");
+$("#{selector}").autocomplete(data)
+HTML
+    content_tag :script, :type => "text/javascript" do
+      output
+    end
+  end
 
 
 

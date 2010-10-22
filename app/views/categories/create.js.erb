@@ -1,0 +1,22 @@
+if ($("#errors").length == 0) $("#new_category").prepend("<ul id='errors'></ul>");
+<% if @category.errors.any? -%>
+	$("#errors").replaceWith("<%= escape_javascript(render :partial => 'shared/errors', :locals => {:object => @category})%>");
+	$("#errors").hide(0);
+	$("#errors").show(300);
+
+<% else -%>
+	$("#errors").hide(300);
+
+	/*Clear the entire form*/
+	$(":input:not(input[type = submit])").val("");
+	
+	/*Remove the entire form and close colorbox*/
+  $.colorbox.close();
+
+	$('#article_category_id').append(
+      $('<option></option>')
+      .val("<%= @category.id %>")
+      .html("<%= escape_javascript(@category.name) %>")
+      .attr('selected', 'selected')
+  );
+<% end -%>

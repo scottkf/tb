@@ -16,6 +16,18 @@ module NavigationHelpers
     
     when /the users page/
       '/users/'
+      
+    when /the category page/
+      '/categories/'
+
+    when /the (.*) category page/
+      articles_category_url($1)
+      
+    when /the article page for "([^"]*)"/
+      article_path(Article.find_by_title($1))
+
+    when /the article page by permalink for "([^"]*)"/
+      '/articles/' + Article.find_by_title($1).to_param
 
     when /register/
       '/users/sign_up'

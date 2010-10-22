@@ -1,0 +1,27 @@
+<%= form_for @category, :remote => (params[:js]) || false do |f| %>
+	<% if @category.errors.any? -%>
+	<%= render :partial => 'shared/errors', :locals => {:object => @category} %>
+	<% end %>
+	<%= field_set_tag do %>
+		<%= f.label :name%>
+		<%= f.text_field :name %>
+	<% end %>
+
+	<%= field_set_tag do %>
+		<%= f.label :description%>
+		<%= f.text_field :description %>
+	<% end %>
+
+	<%= field_set_tag do %>
+		<%= f.label :url%>
+		<%= f.text_field :url %>
+	<% end %>
+
+	<%= field_set_tag do %>
+		<%= f.label :layout%>
+		<p>Just the basename, i.e.: "layout", would use layouts/layout.html.erb</p>
+		<%= f.text_field :layout %>
+	<% end %>
+	<%= autocomplete(layouts.join(" "), "#category_layout")%>
+	<%= submit_tag ((params[:action] == 'new' or params[:action] == 'create') && 'Create') || 'Edit', :id => "submit" %>
+<% end %>

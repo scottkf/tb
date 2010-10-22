@@ -6,6 +6,8 @@ A487teabagsCom::Application.routes.draw do
   
   resources :articles, :except => "new"
 
+  resources :categories
+  match "/:category_url" => "categories#list", :as => "articles_category"
 
 
   match "/text_styles" => "articles#text_styles"

@@ -19,5 +19,14 @@ end
 Article.blueprint do
   title {"some title"}
   body {"_here is some content_"}
+  permalink {"#{object.title}"}
   user
+  category
+end
+
+Category.blueprint do
+  name {"hello"}
+  layout {"crazylongfilenamenoonewilluse"}
+  description {"this is a description"}
+  url {"hello#{sn}"}
 end

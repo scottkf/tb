@@ -4,13 +4,15 @@ class ArticlesController < ApplicationController
   respond_to :js, :only => [:create]
 
   def index
-    @articles = Article.where(:published => true).order('created_at DESC').paginate(:page => params[:page])
+    @articles = Article.paginate :page => params[:page], :per_page => 10, :conditions => { :published => true }, :order => 'created_at DESC'
     @article = Article.new
+    @categories = arranged_categories if can? :create, Article
   end
   
 
   def show
     @article = Article.find(params[:id])
+    render :layout => "#{@article.category.layout}" if File.exists? Rails.root.join("app", "views", "layouts","#{@article.category.layout}.html.erb")
   end
 
   def create
@@ -25,6 +27,7 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find(params[:id])
+    @categories = arranged_categories
     authorize! :manage, Article
   end
 
