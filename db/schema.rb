@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101018120638) do
+ActiveRecord::Schema.define(:version => 20101022133140) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(:version => 20101018120638) do
     t.datetime "updated_at"
     t.boolean  "comments_disabled", :default => false
     t.integer  "category_id",                          :null => false
+    t.string   "permalink"
   end
+
+  add_index "articles", ["permalink"], :name => "index_articles_on_permalink"
 
   create_table "categories", :force => true do |t|
     t.string   "name"

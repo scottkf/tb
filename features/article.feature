@@ -15,6 +15,22 @@ Feature: Articles
 		Then I should see "hello"
 		And I should see "....L"
 		And I should see "steve brown"
+		
+	@permalink
+	Scenario: Show an article by permalink
+		Given I have an article 
+		And the article has a title "hello"
+		And the article has a body "....L"
+		And the article has an author "steve" "brown"
+		And I am not authenticated
+	 	When I go to the article page by permalink for "hello"
+	 	And show me the page
+		Then I should see "hello"
+		And I should see "....L"
+		And I should see "steve brown"
+	
+	
+	
 	# 	
 	# @show
 	# Scenario: Showing an individual article with comments

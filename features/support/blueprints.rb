@@ -19,6 +19,7 @@ end
 Article.blueprint do
   title {"some title"}
   body {"_here is some content_"}
+  permalink {"#{object.title}"}
   user
   category
 end

@@ -22,9 +22,6 @@
 		<p>Just the basename, i.e.: "layout", would use layouts/layout.html.erb</p>
 		<%= f.text_field :layout %>
 	<% end %>
-	<script type="text/javascript">
-	var data = "<%= escape_javascript(layouts.join(" ")) %>".split(" ");
-	$("#category_layout").autocomplete(data)
-	</script>
+	<%= autocomplete(layouts.join(" "), "#category_layout")%>
 	<%= submit_tag ((params[:action] == 'new' or params[:action] == 'create') && 'Create') || 'Edit', :id => "submit" %>
 <% end %>

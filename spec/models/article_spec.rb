@@ -49,6 +49,31 @@ describe Article do
     end
   end
   
+  context "#permalink" do
+    describe "valid" do
+      it "should be unique" do
+        @article = Article.make!(:permalink => "hello")
+        @article.should be_valid
+        @article2 = Article.make(:permalink => "hello")
+        @article2.should_not be_valid
+        @article2.should have(1).error_on(:permalink)
+      end
+    end
+    describe "default" do
+      it "should create a default permalink if none is given" do
+        id = Article.make!(:title => "hello").id
+        @article = Article.find(id)
+        @article.permalink.should == "hello"
+      end
+
+      it "should not create a default permalink if one is given" do
+        id = Article.make!(:title =>"hello", :permalink => "apples").id
+        @article = Article.find(id)
+        @article.permalink.should == "apples"
+      end
+    end
+  end
+  
   context "#markdown" do
     it "should process markdown correctly" do
       @article = Article.make(:body => "_hello_")

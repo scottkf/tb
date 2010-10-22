@@ -98,8 +98,6 @@ Feature: Category
 	 	Then I should see "UNCOMMONSHIBBOLETH" within "h1"
 		And I should see "hello"
 		And I should see "....L"
-		And show me the page
-	
 	
 	
 	@javascript

@@ -14,11 +14,12 @@ module ApplicationHelper
   
   def autocomplete(data, selector)
     output = <<-HTML
-<script type="text/javascript">
 var data = "#{data}".split(" ");
 $("#{selector}").autocomplete(data)
-</script>
 HTML
+    content_tag :script, :type => "text/javascript" do
+      output
+    end
   end
 
 

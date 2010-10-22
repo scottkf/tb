@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    render :layout => "#{@article.category.layout}"
+    render :layout => "#{@article.category.layout}" if File.exists? Rails.root.join("app", "views", "layouts","#{@article.category.layout}.html.erb")
   end
 
   def create
