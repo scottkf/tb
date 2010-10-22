@@ -10,7 +10,8 @@ class CreateCategoriesAndMore < ActiveRecord::Migration
     end
     
     add_index :categories, :ancestry
-    add_column :articles, :category_id, :integer, { :null => false }
+    add_column :articles, :category_id, :integer, :null => false, :default => 1
+    change_column :articles, :category_id, :integer, :null => false 
     
     #create default category
     c = Category.create(:name => "Default", :layout => "application", :description => "default category", :url => "default")
