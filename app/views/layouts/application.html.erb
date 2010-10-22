@@ -28,13 +28,18 @@
 		</header>
 		<nav>
 			<ul>
-				<li><a href="/">about teabags</a></li>
-				<li><a href="mailto:web@487teabags.com">contact</a></li>
+				<% if can? :manage, Category %>
+				<li><%= link_to "manage categories", categories_path %></li>
+				<% end %>
+				<% if can? :manage, User %>
+				<li><%= link_to "manage users", users_path %></li>
+				<% end %>
 				<% if user_signed_in? %><li><a href="/#add">add</a></li>
 				<li><%= link_to "my profile", user_path(current_user)%>
 				<li><%= link_to "sign out", destroy_user_session_path %></li>
 				<% else %><li><%= link_to "sign in", new_user_session_path %></li>
 				<% end %>
+				<li><a href="mailto:web@487teabags.com">contact</a></li>
 			</ul>
 		</nav>
 		<section id="content">
