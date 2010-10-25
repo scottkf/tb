@@ -8,7 +8,7 @@ gem "mysql"
 gem "compass"
 gem "devise"
 gem "cancan"
-gem "ancestry", :git => "git://github.com/scottkf/ancestry.git", :branch => "master"
+gem "ancestry", '>= 1.2.2'
 
 group :development, :test do
   gem "rspec"
@@ -19,7 +19,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "cucumber-rails", :git => "http://github.com/robholland/cucumber-rails.git"  
   gem "capybara", :git => "http://github.com/jnicklas/capybara.git"
-  gem "capybara-envjs"
+  gem "capybara-envjs", :git => "http://github.com/smparkes/capybara-envjs.git"
   gem "launchy"
   gem 'machinist', '>= 2.0.0.beta2'
 end

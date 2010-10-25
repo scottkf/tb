@@ -22,9 +22,10 @@
 		</script>
 		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=478">comments powered by Disqus.</a></noscript>
 	</section>
-	<% elsif %>
+	<% elsif article.comments_disabled == false %>
 	<section class="comments">
 		<a href="<%= article_path(article)%>#disqus_thread">Comments</a>
 	</section>
+	<% else %>
 	<% end %>
 </article>

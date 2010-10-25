@@ -16,17 +16,14 @@ class ApplicationController < ActionController::Base
     Category.find_by_name(name).children
   end
 
+
   #returns an array of hashes to be used for a form
   def arranged_categories
-    array = Array.new
-    x = lambda { |k| 
-      array << [("-" * k.depth.to_i)+ " " + k.name, k.id]
-      if k.has_children?
-        k.children.map(&x) 
-      end
-    }
-    main_categories.map(&x)
-    array
+    Category.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
+      }.sort {|x,y| x.ancestry <=> y.ancestry 
+      }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] 
+      }.unshift(["-- none --", nil])    
+    # Category.ordered_by_ancestry.map { |c| ["-" * c.depth + c.name,c.id] }.unshift(["--none--", nil])
   end
 
   def respond_to_not_found(*types)

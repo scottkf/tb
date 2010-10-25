@@ -6,6 +6,6 @@
 	<% @categories.each do |category| %>
 		<%= render :partial => "category", :locals => {:category => category} %>
 	<% end %>
-		<tr><td><%= link_to_if(can?(:create, Category), "Create Category", new_category_path)%></td></tr>
+		<tr><td><%= link_to "Create Category", new_category_path if can? :create, Category%></td></tr>
 	</tbody>
 </table>

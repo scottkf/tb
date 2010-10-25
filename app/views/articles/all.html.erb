@@ -1,0 +1,16 @@
+<table>
+	<tbody>
+		<tr>
+			<td><a href="?sort=by_title">Title</a></td><% if can? :manage, Article %><td><a href="?sort=by_published">Published?</a></td><td><a href="?sort=by_created">Published on</a></td><td><a href="?sort=by_updated">Last Updated</a></td><% end %>
+		</tr>
+		<% @articles.each do |a| %>
+		<tr>
+			<td>
+				<%= link_to a.title, edit_article_path(a) %>
+			</td>
+			<td><%= a.published %></td><td><%= a.created_at %></td><td><%= a.updated_at %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate @articles %>

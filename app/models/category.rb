@@ -14,6 +14,7 @@ class Category < ActiveRecord::Base
   validates_length_of :url, :in => 3..10, :too_short => "must have atleast 3 characters", :too_long => "must have 10 or fewer characters"
 
   private
+
   def layout_exists
     if !File.exists?(Rails.root.join("app", "views", "layouts", "#{self.layout}.html.erb"))
       File.open(Rails.root.join("app", "views", "layouts", "#{self.layout}.html.erb"), 'w') {|f| f.write("<html>\n<body>\n  <%= yield %>\n</body>\n</html>\n") }
