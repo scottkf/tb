@@ -14,6 +14,8 @@ Feature: Category
 		Then I should see "hello"
 		And I should see "hello23"
 		
+	
+		
 	@adding
 	Scenario: Adding a category
 		Given I am an authenticated user with name "steve" "brown"
@@ -46,7 +48,17 @@ Feature: Category
 		And I should see "epic"
 		And I should see "loooooong"
 	
-	  
+	@parents
+	Scenario: I shouldn't see myself listed as a choice for my parent
+		Given I am an authenticated user with name "steve" "brown"
+		And I am an admin
+		And there is a category with name "hello" and url "hello23"
+		And I am on the category page
+		When I follow "Edit"
+		Then "hello" should not be seen within select "category[parent_id]"
+	
+	
+	
 	
 	# fopen to add something unique to the layout to check for it
 	@layout
@@ -66,6 +78,7 @@ Feature: Category
 		# it shouldn't matter --^
 		And there is a category with name "hello" and url "hello23"
 	  	When I am on the hello23 category page
+		And show me the page
 	  	Then I should be on the articles page
 		# because there are no articles
 	
@@ -83,6 +96,19 @@ Feature: Category
 	 	Then I should see "UNCOMMONSHIBBOLETH" within "h1"
 		And I should see "hello"
 		And I should see "....L"
+		
+		
+	@subcatlist
+	Scenario: I should be able to see all articles subcategorized
+		Given there is a category with name "hello" and url "hello23"
+		And I have an article in that category with title "bobby jones"
+		And there is a category with name "absolute" and url "absolute"
+		And that category has a parent with name "hello"
+		And I have an article in that category with title "epic misery"
+		When I am on the hello category page
+		Then I should see "bobby jones"
+		And I should see "epic misery"
+
 	
 	@individualarticle
 	Scenario: Viewing an individual article should be shown with the layout

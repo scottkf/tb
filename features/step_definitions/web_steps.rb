@@ -150,6 +150,14 @@ Then /^"([^"]*)" should be selected for "([^"]*)"$/ do |value, field|
   assert page.has_xpath?("//option[@selected = 'selected' and contains(string(), value)]") 
 end
 
+Then /^"([^"]*)" should be seen within select "([^"]*)"$/ do |value, field|
+  assert page.has_xpath?("/field/option[contains(string(), value)]") 
+end
+
+Then /^"([^"]*)" should not be seen within select "([^"]*)"$/ do |value, field|
+  assert page.has_no_xpath?("/field/option[contains(string(), value)]") 
+end
+
 Then /^the "([^"]*)" field(?: within "([^"]*)")? should contain "([^"]*)"$/ do |field, selector, value|
   with_scope(selector) do
     field = find_field(field)

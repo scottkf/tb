@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   load_and_authorize_resource :except => [:list, :layouts]
 
+  before_filter :organized, :only => [:edit, :new]
   
   def index
     @categories = Category.all if can? :index, Category
@@ -14,6 +15,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @arranged = @arranged.delete_if {|c| c[1] == @category.id}
   end
 
   def create
@@ -61,7 +63,9 @@ class CategoriesController < ApplicationController
 
   def list
     @category = Category.find_by_url(params[:category_url])
-    if @category and (@articles = Article.find_by_category_id(@category.id)) and File.exists? Rails.root.join("app", "views", "layouts","#{@category.layout}.html.erb")
+    if @category and 
+      ((@articles = Article.published.where(:category_id => [@category.id, @category.child_ids.join(", ")]).paginate :page => params[:page], :per_page => 10).size > 0) and 
+      File.exists? Rails.root.join("app", "views", "layouts","#{@category.layout}.html.erb")
       render :layout => "#{@category.layout}" if @articles 
       #get all articles belonging to category, paginated
       #check if the url is a subcategory, if it is, just get subcats
@@ -69,5 +73,12 @@ class CategoriesController < ApplicationController
       redirect_to articles_path
     end
   end
+  
+  
+  private
+  def organized
+    @arranged = arranged_categories
+  end
+  
   
 end

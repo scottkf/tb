@@ -4,13 +4,14 @@ A487teabagsCom::Application.routes.draw do
   devise_for :users
   resources :users
   
+  match "/text_styles" => "articles#text_styles"
+  match "/articles/all" => "articles#all", :as => "articles_all"
   resources :articles, :except => "new"
 
   resources :categories
   match "/:category_url" => "categories#list", :as => "articles_category"
 
 
-  match "/text_styles" => "articles#text_styles"
 
   root :to => "articles#index"
 

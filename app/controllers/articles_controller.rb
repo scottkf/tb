@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   respond_to :js, :only => [:create]
 
   def index
-    @articles = Article.paginate :page => params[:page], :per_page => 10, :conditions => { :published => true }, :order => 'created_at DESC'
+    @articles = Article.published.paginate :page => params[:page], :per_page => 10
     @article = Article.new
     @categories = arranged_categories if can? :create, Article
   end
@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @categories = arranged_categories
     authorize! :manage, Article
+    session[:return_to] = request.referer
   end
 
   def update
@@ -37,8 +38,9 @@ class ArticlesController < ApplicationController
     params[:article][:user][:role_ids] = [] if params[:article][:user]
      respond_to do |format|
        if @article.update_attributes(params[:article])
-         format.html { redirect_to(articles_path,
-                       :notice => 'Article was successfully updated.') }
+         format.html { 
+           redirect_to(session[:return_to], :notice => 'Article was successfully updated.') 
+         }
          format.xml  { head :ok }
        else
          format.html { render :action => "edit" }
@@ -47,6 +49,11 @@ class ArticlesController < ApplicationController
        end
      end
    end
+  
+  def all
+    @articles = Article.ordered(params[:sort]).paginate :page => params[:page], :per_page => 10
+    authorize! :manage, Article
+  end
   
   def text_styles
     render :layout => false

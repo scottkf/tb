@@ -28,11 +28,12 @@
 		</header>
 		<nav>
 			<ul>
-				<% if can? :manage, Category %>
-				<li><%= link_to "manage categories", categories_path %></li>
-				<% end %>
+				<li><%= link_to "categories", categories_path %></li>
 				<% if can? :manage, User %>
 				<li><%= link_to "manage users", users_path %></li>
+				<% end %>
+				<% if can? :manage, Article %>
+				<li><%= link_to "manage articles", articles_all_path %></li>
 				<% end %>
 				<% if user_signed_in? %><li><a href="/#add">add</a></li>
 				<li><%= link_to "my profile", user_path(current_user)%>

@@ -4,6 +4,16 @@ Feature: Articles
 	In order to view the most recent articles
 	I need to see the latest articles
 	
+	
+	@published
+	Scenario: A published article shouldn't be seen
+	  Given I have an unpublished article with title "awesomely epic title is here"
+	  When I go to the homepage
+	  Then should not see "awesomely epic title is here"
+	
+	
+	
+	
 	@index
 	Scenario: Home page
 		Given I have an article 
@@ -24,7 +34,6 @@ Feature: Articles
 		And the article has an author "steve" "brown"
 		And I am not authenticated
 	 	When I go to the article page by permalink for "hello"
-	 	And show me the page
 		Then I should see "hello"
 		And I should see "....L"
 		And I should see "steve brown"

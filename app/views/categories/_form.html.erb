@@ -17,6 +17,11 @@
 		<%= f.text_field :url %>
 	<% end %>
 
+	<%= field_set_tag do%>	
+		<%= f.label :parent_id %>
+		<%= f.select :parent_id, @arranged%>
+	<% end %>
+
 	<%= field_set_tag do %>
 		<%= f.label :layout%>
 		<p>Just the basename, i.e.: "layout", would use layouts/layout.html.erb</p>

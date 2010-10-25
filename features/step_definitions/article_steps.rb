@@ -29,6 +29,11 @@ Given /^the article has an author "([^"]*)" "([^"]*)"$/ do |f, l|
   @article.save
 end
 
+Given /^I have an unpublished article with title "([^"]*)"$/ do |arg1|
+  @article = Article.make!(:published => false)
+end
+
+
 Given /^I authored the article$/ do
   @article.user = @user
   @article.save
