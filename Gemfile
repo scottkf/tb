@@ -8,6 +8,6 @@ gem "mysql"
 gem "compass"
 gem "devise"
 gem "cancan"
-# gem "mime-types"
-# gem "treetop"
+gem "mime-types"
+gem "treetop"
 gem "ancestry", '>= 1.2.2'
