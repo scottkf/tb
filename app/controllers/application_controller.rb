@@ -21,9 +21,8 @@ class ApplicationController < ActionController::Base
   def arranged_categories
     Category.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
       }.sort {|x,y| x.ancestry <=> y.ancestry 
-      }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] 
-      }.unshift(["-- none --", nil])    
-    # Category.ordered_by_ancestry.map { |c| ["-" * c.depth + c.name,c.id] }.unshift(["--none--", nil])
+      }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] }
+      # Category.ordered_by_ancestry.map { |c| ["-" * c.depth + c.name,c.id] }.unshift(["--none--", nil])
   end
 
   def respond_to_not_found(*types)

@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
   
   validates :first_name, :last_name, :presence => true
   validates :email, :presence => true, :uniqueness => true, :email => true
+  validates_format_of :first_name, :with => /^[^0-9`!@#\$%\^&*+_=]+$/
+  validates_format_of :last_name, :with => /^[^0-9`!@#\$%\^&*+_=]+$/
 
-  
   def name
     self.first_name + " " + self.last_name
   end
