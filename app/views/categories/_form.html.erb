@@ -19,7 +19,7 @@
 
 	<%= field_set_tag do%>	
 		<%= f.label :parent_id %>
-		<%= f.select :parent_id, @arranged%>
+		<%= f.select :parent_id, @arranged.unshift(["--none--", nil])%>
 	<% end %>
 
 	<%= field_set_tag do %>

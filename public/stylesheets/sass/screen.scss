@@ -177,6 +177,10 @@ form {
       display: block;
     }
 
+		select#article_category_id {
+			display: block;
+		}
+
     input.text, input[type="text"], textarea {
 			@include column(floor($blueprint-grid-columns * (1/3)));	
     }
