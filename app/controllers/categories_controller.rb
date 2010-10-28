@@ -4,7 +4,10 @@ class CategoriesController < ApplicationController
   before_filter :organized, :only => [:edit, :new]
   
   def index
-    @categories = Category.all if can? :index, Category
+    # @categories = Category.all if can? :index, Category
+    @categories = Category.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
+      }.sort {|x,y| x.ancestry <=> y.ancestry 
+      } if can? :index, Category
   end
 
   def show
@@ -64,7 +67,7 @@ class CategoriesController < ApplicationController
   def list
     @category = Category.find_by_url(params[:category_url])
     if @category and 
-      ((@articles = Article.published.where(:category_id => [@category.id, @category.child_ids.join(", ")]).paginate :page => params[:page], :per_page => 10).size > 0) and 
+      ((@articles = Article.published.where(:category_id => [@category.id.to_s,@category.child_ids].flatten).paginate :page => params[:page], :per_page => 10).size > 0) and 
       File.exists? Rails.root.join("app", "views", "layouts","#{@category.layout}.html.erb")
       render :layout => "#{@category.layout}" if @articles 
       #get all articles belonging to category, paginated
@@ -77,7 +80,7 @@ class CategoriesController < ApplicationController
   
   private
   def organized
-    @arranged = arranged_categories
+    @arranged = arranged_categories if can? :read, Category
   end
   
   

@@ -14,15 +14,15 @@
 	<% end %>
 	
 	<%= field_set_tag do %>
-		<%= f.label :published%>
 		<%= f.check_box :published %>
+		<%= f.label :published%>
 	<% end %>
 
 	<%= field_set_tag do %>
-		<p>A unique URL for each article (will be id-title if none given)<br />
-			<small>i.e.: articles/1-permalink-title</small>
-		</p>
 		<%= f.label :permalink %>
+		<p>A unique URL for each article (will be &lt;title> if none given)<br />
+			<small>i.e.: 'title' would be produce /articles/&lt;#>-title</small>
+		</p>
 		<%= f.text_field :permalink %>
 	<% end %>
 

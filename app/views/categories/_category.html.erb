@@ -1,5 +1,5 @@
 		<tr>
-			<th><%= link_to category.name, articles_category_path(category.url) %></th>
+			<th><%= "-" * category.depth if category.depth > 1 %><%= link_to category.name, articles_category_path(category.url) %></th>
 			<% if can? :manage, Category %>
 			<td><%= category.description %></td>
 			<td><%= category.url%></td>

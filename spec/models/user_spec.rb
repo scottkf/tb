@@ -15,6 +15,25 @@ describe User do
       end
     end
     
+    describe "name" do
+      it "should only have a valid first name" do
+        @user = User.make(:first_name => "Mc.Error$")
+        @user.should be_invalid
+        @user.should have(1).error_on(:first_name)
+        @user.first_name = "Mcerror"
+        @user.email = "fake@fake.com"
+        @user.should be_valid
+      end
+      it "should only have a valid last name" do
+        @user = User.make(:last_name => "Newm@n3a!")
+        @user.should be_invalid
+        @user.should have(1).error_on(:last_name)
+        @user.last_name = "Mcerror"
+        @user.email = "fake@fake.com"
+        @user.should be_valid        
+      end
+    end
+    
     describe "roles" do
       it "should have a default role, even if none is given" do
         @user = User.make!

@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json { render :json => @users }
       format.xml  { render :xml => @users }
-      format.html
+      format.html {
+        redirect_to root_path if !can? :manage, User
+      }
     end
   end
  

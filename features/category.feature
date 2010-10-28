@@ -69,17 +69,17 @@ Feature: Category
 		And I have an article in that category
 		And the layout has "<html><body><h1>UNCOMMONSHIBBOLETH</h1><%= yield %></body></html>"
 	 	When I am on the hello23 category page
+		And show me the page
 	 	Then I should see "UNCOMMONSHIBBOLETH" within "h1"
 	
 	
 	@noarticles
 	Scenario: Viewing a category with no articles
- 		Given I am not authenticated
+		Given I am not authenticated
 		# it shouldn't matter --^
 		And there is a category with name "hello" and url "hello23"
-	  	When I am on the hello23 category page
-		And show me the page
-	  	Then I should be on the articles page
+		When I am on the hello23 category page
+		Then I should be on the articles page
 		# because there are no articles
 	
 	@actualarticles

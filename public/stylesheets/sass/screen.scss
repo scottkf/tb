@@ -177,6 +177,17 @@ form {
       display: block;
     }
 
+
+    input[type="checkbox"] + label {
+      display: inline;      
+    }
+    label[for="user_remember_me"], label[for="article_published"] {
+    }
+
+		select#article_category_id {
+			display: block;
+		}
+
     input.text, input[type="text"], textarea {
 			@include column(floor($blueprint-grid-columns * (1/3)));	
     }
