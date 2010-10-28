@@ -177,6 +177,13 @@ form {
       display: block;
     }
 
+
+    input[type="checkbox"] + label {
+      display: inline;      
+    }
+    label[for="user_remember_me"], label[for="article_published"] {
+    }
+
 		select#article_category_id {
 			display: block;
 		}
