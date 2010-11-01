@@ -79,7 +79,27 @@ body.bp {
 			}
 		}
 		
-		nav {
+		nav.manage {
+		  @include horizontal-list;
+      @include prepend(10);
+		  @include column(14, true);
+      ul {
+        li {
+          float: right;
+          &.active {
+            background-color: $link-color - #222;
+            a {
+              color: black;
+              text-decoration: none;
+            }
+          }
+          a {
+          }
+        }
+      }
+
+		}
+		nav.main {
 		  margin-bottom: 4.5em;
 			ul {
 			 @include horizontal-list;
@@ -88,6 +108,13 @@ body.bp {
          padding-left: 0px;
          padding-right: 1px;
          margin: 0px;
+         &.active {
+           &:hover {}
+         }
+         &.active a {
+           background-color: $link-color - #222;
+           &:hover {}
+         }
          a {
            display: block;
            padding: 5px;

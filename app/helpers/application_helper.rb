@@ -21,8 +21,11 @@ HTML
       output
     end
   end
+  
 
-
+  def is_active?(controller_name, *actions)
+    " class='active'" if (controller_name.include?(params[:controller]) and actions.include?(params[:action]))
+  end
 
   def habtm_checkboxes(obj, column, assignment_objects, assignment_object_display_column)
     obj_to_s = obj.class.to_s.split("::").last.underscore

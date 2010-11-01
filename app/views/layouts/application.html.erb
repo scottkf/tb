@@ -23,23 +23,29 @@
 	<% flash_messages %> 
 	<div id="padding">
 	<div id="container">
+		<nav class="manage">
+			<ul>
+			<% if user_signed_in? %>
+				<li><%= link_to "sign out", destroy_user_session_path %></li>
+				<li<%= is_active?("users", "show") if current_user.id == params[:id].to_i %>><%= link_to "my profile", user_path(current_user) %>
+				<% if can? :manage, User %>
+				<li<%= is_active?("users", "index", "new", "edit", "show") unless current_user.id == params[:id].to_i %>><%= link_to "manage users", users_path%></li>
+				<% end %>
+				<% if can? :manage, Article %>
+				<li<%= is_active?("articles", "all", "edit")%>><%= link_to "manage articles", articles_all_path %></li>
+				<% end %>
+			<% else %>
+				<li><%= link_to "sign in", new_user_session_path %></li>
+			<% end %>
+			</ul>
+		</nav>
 		<header id="top">
 			<a href="/">478<span class="small">teabags<span>.</span>com</span></a>
 		</header>
-		<nav>
+		<nav class="main">
 			<ul>
-				<li><%= link_to "categories", categories_path %></li>
-				<% if can? :manage, User %>
-				<li><%= link_to "manage users", users_path %></li>
-				<% end %>
-				<% if can? :manage, Article %>
-				<li><%= link_to "manage articles", articles_all_path %></li>
-				<% end %>
-				<% if user_signed_in? %><li><a href="/#add">add</a></li>
-				<li><%= link_to "my profile", user_path(current_user)%>
-				<li><%= link_to "sign out", destroy_user_session_path %></li>
-				<% else %><li><%= link_to "sign in", new_user_session_path %></li>
-				<% end %>
+				<li<%= is_active?("articles", "index")%>><%= link_to "home", articles_path %></li>
+				<li<%= is_active?("categories", "index", "new", "edit", "show")%>><%= link_to "categories", categories_path %></li>
 				<li><a href="mailto:web@487teabags.com">contact</a></li>
 			</ul>
 		</nav>
