@@ -146,6 +146,11 @@ Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, se
   end
 end
 
+Then /^I should see "([^"]*)" within xpath "([^"]*)"$/ do |text, xpath|
+  page.should have_xpath(xpath, :text => text)
+end
+
+
 Then /^"([^"]*)" should be selected for "([^"]*)"$/ do |value, field|
   assert page.has_xpath?("//option[@selected = 'selected' and contains(string(), value)]") 
 end

@@ -73,6 +73,7 @@ class CategoriesController < ApplicationController
       #get all articles belonging to category, paginated
       #check if the url is a subcategory, if it is, just get subcats
     else
+      flash[:notice] = "No articles found in category, #{@category.name}, sorry!"
       redirect_to articles_path
     end
   end

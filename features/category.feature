@@ -58,6 +58,16 @@ Feature: Category
 		Then "hello" should not be seen within select "category[parent_id]"
 	
 	
+	@navigation
+	Scenario: For every category, a link should exist in the main nav
+		Given there is a category with name "hello" and url "hello123"
+		And there is a category with name "hello2" and url "1234"
+	  	When I go to the homepage
+		Then I should see "hello" within xpath "//nav[@class='main']/ul/li/a"
+		And I should see "hello2" within xpath "//nav[@class='main']/ul/li/a"
+		
+	
+	
 	
 	
 	# fopen to add something unique to the layout to check for it
@@ -69,7 +79,6 @@ Feature: Category
 		And I have an article in that category
 		And the layout has "<html><body><h1>UNCOMMONSHIBBOLETH</h1><%= yield %></body></html>"
 	 	When I am on the hello23 category page
-		And show me the page
 	 	Then I should see "UNCOMMONSHIBBOLETH" within "h1"
 	
 	

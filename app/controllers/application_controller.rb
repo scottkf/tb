@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :main_categories
   
   rescue_from CanCan::AccessDenied do |exception|
     flash[:notice] = exception.message
@@ -8,13 +9,9 @@ class ApplicationController < ActionController::Base
 
 
   def main_categories
-    Category.roots
+    @main_categories = Category.roots
   end
   
-  #returns all direct descendants of category
-  def sub_categories(name)
-    Category.find_by_name(name).children
-  end
 
 
   #returns an array of hashes to be used for a form

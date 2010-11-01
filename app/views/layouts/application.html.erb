@@ -34,6 +34,9 @@
 				<% if can? :manage, Article %>
 				<li<%= is_active?("articles", "all", "edit")%>><%= link_to "manage articles", articles_all_path %></li>
 				<% end %>
+				<% if can? :manage, Category %>
+				<li<%= is_active?("categories", "index", "new", "edit", "show")%>><%= link_to "manage categories", categories_path %></li>
+				<% end %>
 			<% else %>
 				<li><%= link_to "sign in", new_user_session_path %></li>
 			<% end %>
@@ -45,7 +48,11 @@
 		<nav class="main">
 			<ul>
 				<li<%= is_active?("articles", "index")%>><%= link_to "home", articles_path %></li>
-				<li<%= is_active?("categories", "index", "new", "edit", "show")%>><%= link_to "categories", categories_path %></li>
+				<% @main_categories.each do |c| -%>
+					<li<%= is_active?("categories", "list") if @category and @category.id == c.id %>>
+						<%= link_to c.name, articles_category_path(c.url) %>
+					</li>
+				<% end -%>
 				<li><a href="mailto:web@487teabags.com">contact</a></li>
 			</ul>
 		</nav>
